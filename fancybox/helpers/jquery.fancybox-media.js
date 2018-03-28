@@ -113,7 +113,7 @@
 					fullscreen    : 1
 				},
 				type : 'iframe',
-				url  : '//player.vimeo.com/video/$1'
+				url  : '//player.vimeo.com/videos/$1'
 			},
 			metacafe : {
 				matcher : /metacafe.com\/(?:watch|fplayer)\/([\w\-]{1,10})/,
@@ -134,7 +134,7 @@
 					autoStart : 1
 				},
 				type : 'swf',
-				url  : '//www.dailymotion.com/swf/video/$1'
+				url  : '//www.dailymotion.com/swf/videos/$1'
 			},
 			twitvid : {
 				matcher : /twitvid\.com\/([a-zA-Z0-9_\-\?\=]+)/i,

@@ -5,14 +5,19 @@
   
 
   
-  <title>Hexo</title>
+  <title>ScrollChaining链式滑动的解决办法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样         如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它 ##边缘滑动传递这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样         为什么还会向外传递滑">
+<meta name="keywords" content="Javascript, CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ScrollChaining链式滑动的解决办法">
+<meta property="og:url" content="http://yoursite.com/2018/03/28/scrollChaining/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样         如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它 ##边缘滑动传递这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样         为什么还会向外传递滑">
+<meta property="og:updated_time" content="2018-03-28T09:17:08.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="ScrollChaining链式滑动的解决办法">
+<meta name="twitter:description" content="##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样         如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它 ##边缘滑动传递这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样         为什么还会向外传递滑">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-scrollChaining" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-scrollChaining" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/28/scrollChaining/" class="article-date">
   <time datetime="2018-03-28T08:29:35.000Z" itemprop="datePublished">2018-03-28</time>
@@ -78,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
+    <h1 class="article-title" itemprop="name">
+      ScrollChaining链式滑动的解决办法
     </h1>
   
 
@@ -107,11 +110,9 @@
     </footer>
   </div>
   
-</article>
-
-
+    
   
-
+</article>
 
 </section>
         
