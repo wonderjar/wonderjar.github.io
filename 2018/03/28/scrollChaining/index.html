@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/28/scrollChaining/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样         如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它 ##边缘滑动传递这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样         为什么还会向外传递滑">
-<meta property="og:updated_time" content="2018-03-28T09:17:08.975Z">
+<meta property="og:updated_time" content="2018-03-28T09:19:44.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ScrollChaining链式滑动的解决办法">
 <meta name="twitter:description" content="##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样         如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它 ##边缘滑动传递这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样         为什么还会向外传递滑">
@@ -95,14 +95,14 @@
 <p>##边缘滑动传递<br>这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样</p>
 <p><div style="text-align: left;"><br>    <video controls="controls" src="/videos/modal-off.mp4" style="width: 450px; height: 300px;"><br>    </video><br></div><br>为什么还会向外传递滑动，不是已经prevent了?<br>这是因为当没有滑动到边界时，当前overflow: scroll的元素能”消化”这个滑动，会触发滑动事件，但到了边界之后，当前元素不能”消化”这个滑动，就由它的支持scroll的父元素来”消化”这个滑动<br>对于这个行为，IE过去就有一个CSS属性</p>
 <blockquote>
-<p>-ms-scroll-chaining: chained | none<br>Specifies the scrolling behavior that occurs when a user hits the scroll limit during a manipulation.<br>而在CSS3中，也终于有了这一增强，<br>The overscroll-behavior property is a new CSS feature that controls the behavior of what happens when you over-scroll a container (including the page itself). You can use it to cancel scroll chaining, disable/customize the pull-to-refresh action, disable rubberbanding effects on iOS (when Safari implements overscroll-behavior), and more. The best part is that using overscroll-behavior does not adversely affect page performance like the hacks mentioned in the intro!<br>The property takes three possible values:<br>auto - Default. Scrolls that originate on the element may propagate to ancestor elements.<br>contain - prevents scroll chaining. Scrolls do not propagate to ancestors but local effects within the node are shown. For example, the overscroll glow effect on Android or the rubberbanding effect on iOS which notifies the user when they’ve hit a scroll boundary. Note: using overscroll-behavior: contain on the html element prevents overscroll navigation actions.<br>none - same as contain but it also prevents overscroll effects within the node itself (e.g. Android overscroll glow or iOS rubberbanding).<br>好了，有了这个属性，看起来问题很好解决了，不过不幸的是，在我测试下，我的手机就不支持这个CSS属性</p>
+<p>-ms-scroll-chaining: chained | none<br>Specifies the scrolling behavior that occurs when a user hits the scroll limit during a manipulation.<br>而在CSS3中，也终于有了这一增强，<br>The overscroll-behavior property is a new CSS feature that controls the behavior of what happens when you over-scroll a container (including the page itself). You can use it to cancel scroll chaining, disable/customize the pull-to-refresh action, disable rubberbanding effects on iOS (when Safari implements overscroll-behavior), and more. The best part is that using overscroll-behavior does not adversely affect page performance like the hacks mentioned in the intro!<br>The property takes three possible values:<br>auto - Default. Scrolls that originate on the element may propagate to ancestor elements.<br>contain - prevents scroll chaining. Scrolls do not propagate to ancestors but local effects within the node are shown. For example, the overscroll glow effect on Android or the rubberbanding effect on iOS which notifies the user when they’ve hit a scroll boundary. Note: using overscroll-behavior: contain on the html element prevents overscroll navigation actions.<br>none - same as contain but it also prevents overscroll effects within the node itself (e.g. Android overscroll glow or iOS rubberbanding).<br>好了，有了这个属性，看起来问题被很优雅地解决了，不过不幸的是，在我测试下，我的手机就不支持这个CSS属性</p>
 </blockquote>
 <p>##Tricks<br>CSS不支持，那为了隔绝掉这个影响，可以用些小办法，比如借助事件，当上层打开时，通过事件通知到下层的组件，将下层组件的overflow属性改掉，从而取消掉下层组件的滑动，当上层关掉时，同样通过事件通知恢复下层的滚动功能</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/scrollChaining/" data-id="cjfavo5y40000sd5beq4ombp7" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/28/scrollChaining/" data-id="cjfbyewy20000cq5b6vjho23y" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript-CSS/">Javascript, CSS</a></li></ul>
@@ -111,6 +111,20 @@
   </div>
   
     
+<nav id="article-nav">
+  
+    <a href="/2018/03/29/zindex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          zindex谁上谁下
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
@@ -162,6 +176,14 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/03/29/test/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/29/zindex/">zindex谁上谁下</a>
+          </li>
         
           <li>
             <a href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>

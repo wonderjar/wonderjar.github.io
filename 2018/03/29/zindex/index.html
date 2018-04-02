@@ -5,14 +5,21 @@
   
 
   
-  <title>Hexo</title>
+  <title>zindex谁上谁下 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="##不一定需要zindex首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。但对于这几类，也不是总需要zindex，我觉得有两点需要知道，1.非static定位的元素有一个隐式的层级，居于static定位元素之上2.html中后边的元素有一个隐式的层级，居于前边元素之上比如运行这段html，&amp;lt;div style=&amp;quot;width:">
+<meta name="keywords" content="Javascript, CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zindex谁上谁下">
+<meta property="og:url" content="http://yoursite.com/2018/03/29/zindex/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="##不一定需要zindex首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。但对于这几类，也不是总需要zindex，我觉得有两点需要知道，1.非static定位的元素有一个隐式的层级，居于static定位元素之上2.html中后边的元素有一个隐式的层级，居于前边元素之上比如运行这段html，&amp;lt;div style=&amp;quot;width:">
+<meta property="og:image" content="http://yoursite.com/images/overlay.pgn">
+<meta property="og:updated_time" content="2018-03-29T03:24:05.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="zindex谁上谁下">
+<meta name="twitter:description" content="##不一定需要zindex首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。但对于这几类，也不是总需要zindex，我觉得有两点需要知道，1.非static定位的元素有一个隐式的层级，居于static定位元素之上2.html中后边的元素有一个隐式的层级，居于前边元素之上比如运行这段html，&amp;lt;div style=&amp;quot;width:">
+<meta name="twitter:image" content="http://yoursite.com/images/overlay.pgn">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,51 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/29/test/" class="article-date">
-  <time datetime="2018-03-29T03:20:36.851Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test</title>
-</head>
-<body>
-    <div style="width: 300px; height: 300px; border: 2px solid black; position: relative;">
-        <div style="width: 200px; height: 200px; background-color: red; position: absolute;">
-        </div>
-        <div style="width: 100px; height: 300px; background-color: yellow;">
-        </div>
-        <div style="width: 300px; height: 100px; background-color: blue; position: relative; bottom: 300px;">
-        </div>
-    </div>
-</body>
-</html>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/29/test/" data-id="cjfbyewy70001cq5bpdfdki7e" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-zindex" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-zindex" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/29/zindex/" class="article-date">
   <time datetime="2018-03-29T03:06:20.000Z" itemprop="datePublished">2018-03-29</time>
@@ -120,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/29/zindex/">zindex谁上谁下</a>
+    <h1 class="article-title" itemprop="name">
+      zindex谁上谁下
     </h1>
   
 
@@ -149,61 +112,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-scrollChaining" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/28/scrollChaining/" class="article-date">
-  <time datetime="2018-03-28T08:29:35.000Z" itemprop="datePublished">2018-03-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/03/29/test/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
         
+          (no title)
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
-    </h1>
   
+    <a href="/2018/03/28/scrollChaining/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">ScrollChaining链式滑动的解决办法</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##滑动传递<br>滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样</p>
-<p><div style="text-align: left;"><br>    <video controls="controls" src="/videos/chatbox-chaining.mp4" style="width: 150px; height: 300px;"><br>    </video><br></div><br>如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它</p>
-<p>##边缘滑动传递<br>这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样</p>
-<p><div style="text-align: left;"><br>    <video controls="controls" src="/videos/modal-off.mp4" style="width: 450px; height: 300px;"><br>    </video><br></div><br>为什么还会向外传递滑动，不是已经prevent了?<br>这是因为当没有滑动到边界时，当前overflow: scroll的元素能”消化”这个滑动，会触发滑动事件，但到了边界之后，当前元素不能”消化”这个滑动，就由它的支持scroll的父元素来”消化”这个滑动<br>对于这个行为，IE过去就有一个CSS属性</p>
-<blockquote>
-<p>-ms-scroll-chaining: chained | none<br>Specifies the scrolling behavior that occurs when a user hits the scroll limit during a manipulation.<br>而在CSS3中，也终于有了这一增强，<br>The overscroll-behavior property is a new CSS feature that controls the behavior of what happens when you over-scroll a container (including the page itself). You can use it to cancel scroll chaining, disable/customize the pull-to-refresh action, disable rubberbanding effects on iOS (when Safari implements overscroll-behavior), and more. The best part is that using overscroll-behavior does not adversely affect page performance like the hacks mentioned in the intro!<br>The property takes three possible values:<br>auto - Default. Scrolls that originate on the element may propagate to ancestor elements.<br>contain - prevents scroll chaining. Scrolls do not propagate to ancestors but local effects within the node are shown. For example, the overscroll glow effect on Android or the rubberbanding effect on iOS which notifies the user when they’ve hit a scroll boundary. Note: using overscroll-behavior: contain on the html element prevents overscroll navigation actions.<br>none - same as contain but it also prevents overscroll effects within the node itself (e.g. Android overscroll glow or iOS rubberbanding).<br>好了，有了这个属性，看起来问题被很优雅地解决了，不过不幸的是，在我测试下，我的手机就不支持这个CSS属性</p>
-</blockquote>
-<p>##Tricks<br>CSS不支持，那为了隔绝掉这个影响，可以用些小办法，比如借助事件，当上层打开时，通过事件通知到下层的组件，将下层组件的overflow属性改掉，从而取消掉下层组件的滑动，当上层关掉时，同样通过事件通知恢复下层的滚动功能</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/scrollChaining/" data-id="cjfbyewy20000cq5b6vjho23y" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript-CSS/">Javascript, CSS</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
