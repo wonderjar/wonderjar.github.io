@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -87,7 +87,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/com/" data-id="cjfhpc7zp0000as5bxevulchg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/02/com/" data-id="cjfjee06n0000pa5b9qufj6ou" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -123,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/04/02/dom/" data-id="cjfhpc7zt0002as5bp2v0f5yf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/04/02/dom/" data-id="cjfjee06s0002pa5bw00hi95t" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -159,7 +159,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##不一定需要zindex<br>首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。<br>但对于这几类，也不是总需要zindex，我觉得有两点需要知道，<br>1.非static定位的元素有一个隐式的层级，居于static定位元素之上<br>2.html中后边的元素有一个隐式的层级，居于前边元素之上<br>比如运行这段html，<br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
+        <p>##不一定需要zindex<br>首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。<br>但对于这几类，也不是总需要zindex，我觉得有两点需要知道，<br>1.非static定位的元素有一个隐式的层级，居于static定位元素之上<br>2.html中后边的元素有一个隐式的层级，居于前边元素之上<br>3.其实这个也算后来居上，子元素居于父元素之上<br>比如运行这段html，<br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
         &lt;div style=&quot;width: 200px; height: 200px; background-color: red; position: absolute;&quot;&gt;
         &lt;/div&gt;
         &lt;div style=&quot;width: 100px; height: 300px; background-color: yellow;&quot;&gt;
@@ -167,7 +167,7 @@
         &lt;div style=&quot;width: 300px; height: 100px; background-color: blue; position: relative; bottom: 300px;&quot;&gt;
         &lt;/div&gt;
     &lt;/div&gt;</code><br>效果是这样，<br><img src="/images/overlay.png" width="300px" height="300px"></p>
-<p>#zindex作用<br>好了，当我们确实需要调整层级的时候，zindex就能发挥作用<br>数字越大越在上，这个很简单，但需要明确定位到底是以什么作为参考定位<br>先说结论，当我们要比较两个dom节点，那么从它们自身开始向父节点（不超过他们的共同父节点）寻找，找到各自第一个设置过zindex的节点，然后比较他们的zindex，没有视为0，先后顺序同样有隐式层级<br>可以用下面三段代码来测试这一点<br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
+<p>#zindex作用<br>好了，当我们确实需要调整层级的时候，zindex就能发挥作用<br>数字越大越在上，这个很简单，但需要明确定位到底是以什么作为参考定位<br>先说结论，当我们要比较两个dom节点，那么从它们自身开始向父节点（不超过他们的共同父节点）寻找，找到各自第一个非static定位且设置过zindex的节点，然后比较他们的zindex，没有视为0，先后顺序同样有隐式层级<br>可以用下面三段代码来测试这一点<br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
         &lt;div style=&quot;width: 200px; height: 200px; background-color: red; position: absolute;&quot;&gt;
             &lt;div style=&quot;width: 100px; height: 100px; background-color: yellow; z-index: 1;&quot;&gt;
             &lt;/div&gt;
@@ -189,8 +189,9 @@
         &lt;div style=&quot;width: 300px; height: 100px; background-color: blue; position: absolute; top: 50px;&quot;&gt;
         &lt;/div&gt;
     &lt;/div&gt;</code></p>
-<p>#可能引起zindex混乱的原因<br>Reference <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context</a></p>
-<p>The stacking context<br>In the previous part of this article, Using z-index, the rendering order of certain elements is influenced by their z-index value. This occurs because these elements have special properties which cause them to form a stacking context.</p>
+<p>#可能引起zindex混乱的原因<br>上面说道的，其实还只是层叠中的一小部分东西。<br>说到要比较两个节点，其实是必须在同一个层叠上下文中去比。<br>这个层叠上下文就是两个节点的共同父节点所在的层叠上下文，为了找到这两个节点在这个层叠上下文中的位置，需要从这两个节点开始各自往上找（最远不能到公共父节点），找到最后一个能产生层叠上下文的节点，然后就比较这两个节点的位置。<br>这里有点子凭父贵或者子凭父贫的意思，就是如果子节点处在一个很下层的层叠上下文中，当它去上层比较时，其实只看它在最上层的层叠上下文中所处的位置。</p>
+<p>叠加上下文是什么？<br>Reference <a href="https://www.bennadel.com/blog/3371-stacking-context-is-the-key-to-understanding-the-css-z-index.htm" target="_blank" rel="noopener">https://www.bennadel.com/blog/3371-stacking-context-is-the-key-to-understanding-the-css-z-index.htm</a><br>It quarantines the CSS z-index values of its descendant nodes. In other words, it prevents the z-index values in the local DOM tree from interacting with the layering outside of the local DOM tree. And, from the larger document perspective, all elements within a stacking context are treated as if they have the same z-index:</p>
+<p>叠加上下文怎么产生？<br>Reference <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context</a><br>The stacking context<br>In the previous part of this article, Using z-index, the rendering order of certain elements is influenced by their z-index value. This occurs because these elements have special properties which cause them to form a stacking context.</p>
 <p>A stacking context is formed, anywhere in the document, by any element in the following scenarios:</p>
 <p>Root element of document (HTML).</p>
 <ul>
@@ -212,12 +213,14 @@
 <li>Element with a will-change value specifying any property that would create a stacking context on non-initial value (see this post).</li>
 </ul>
 <p>Within a stacking context, child elements are stacked according to the same rules previously explained. Importantly, the z-index values of its child stacking contexts only have meaning in this parent. Stacking contexts are treated atomically as a single unit in the parent stacking context.</p>
-<p>#组件思考<br>有时一个很深层的组件需要一个弹出层，若是弹出层设计在这个深层组件中，也许会受到父组件设定zindex的影响，就没法展示一个全屏最上层的弹出层，不是”坑爹”，而是被”爹坑”。<br>所以没必要的时候不要滥用zindex，设定zindex为0看似没影响，其实也会影响子组件的层级<br>另一方面，可以做一些公共的弹出层组件放在上层，通过事件的方式触发弹出层</p>
+<p>在一个层叠上下文中，元素的顺序又是什么？<br>Reference <a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/</a><br>从上到下，<br>正zindex<br>zindex:auto/zindex:0/不依赖zindex的层叠上下文<br>inline/inline-block水平盒子<br>float浮动盒子<br>block块盒子<br>负zindex<br>层叠上下文，background/border</p>
+<p>要注意其中层叠上下文本身居于最下</p>
+<p>#组件思考<br>有时一个很深层的组件需要一个弹出层，若是弹出层设计在这个深层组件中，也许会受到父组件设定层叠上下文的影响，就没法展示一个全屏最上层的弹出层，不是”坑爹”，而是被”爹坑”。<br>所以没必要的时候不要滥用zindex，要看创建一个新的层叠上下文会带来的负面影响<br>另一方面，可以做一些公共的弹出层组件放在上层，通过事件的方式触发弹出层</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/29/zindex/" data-id="cjfhpc7zx0004as5bx5sdbxuo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/29/zindex/" data-id="cjfjee06w0004pa5bap11qwul" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript-CSS/">Javascript, CSS</a></li></ul>
@@ -267,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/28/scrollChaining/" data-id="cjfhpc7zv0003as5bray5kuhn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/28/scrollChaining/" data-id="cjfjee06u0003pa5bui6zp7bk" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript-CSS/">Javascript, CSS</a></li></ul>
@@ -287,7 +290,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li></ul>
     </div>
@@ -316,7 +319,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -326,7 +329,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
