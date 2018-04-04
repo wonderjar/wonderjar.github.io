@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://wonderjar.me/2018/03/28/scrollChaining/index.html">
 <meta property="og:site_name" content="Wonderjar&#39;s Blog">
 <meta property="og:description" content="##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样         如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它 ##边缘滑动传递这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样         为什么还会向外传递滑">
-<meta property="og:updated_time" content="2018-03-28T09:19:44.916Z">
+<meta property="og:updated_time" content="2018-04-04T09:24:32.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ScrollChaining链式滑动的解决办法">
 <meta name="twitter:description" content="##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样         如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它 ##边缘滑动传递这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样         为什么还会向外传递滑">
@@ -97,12 +97,21 @@
 <blockquote>
 <p>-ms-scroll-chaining: chained | none<br>Specifies the scrolling behavior that occurs when a user hits the scroll limit during a manipulation.<br>而在CSS3中，也终于有了这一增强，<br>The overscroll-behavior property is a new CSS feature that controls the behavior of what happens when you over-scroll a container (including the page itself). You can use it to cancel scroll chaining, disable/customize the pull-to-refresh action, disable rubberbanding effects on iOS (when Safari implements overscroll-behavior), and more. The best part is that using overscroll-behavior does not adversely affect page performance like the hacks mentioned in the intro!<br>The property takes three possible values:<br>auto - Default. Scrolls that originate on the element may propagate to ancestor elements.<br>contain - prevents scroll chaining. Scrolls do not propagate to ancestors but local effects within the node are shown. For example, the overscroll glow effect on Android or the rubberbanding effect on iOS which notifies the user when they’ve hit a scroll boundary. Note: using overscroll-behavior: contain on the html element prevents overscroll navigation actions.<br>none - same as contain but it also prevents overscroll effects within the node itself (e.g. Android overscroll glow or iOS rubberbanding).<br>好了，有了这个属性，看起来问题被很优雅地解决了，不过不幸的是，在我测试下，我的手机就不支持这个CSS属性</p>
 </blockquote>
-<p>##Tricks<br>CSS不支持，那为了隔绝掉这个影响，可以用些小办法，比如借助事件，当上层打开时，通过事件通知到下层的组件，将下层组件的overflow属性改掉，从而取消掉下层组件的滑动，当上层关掉时，同样通过事件通知恢复下层的滚动功能</p>
+<p>##Tricks<br>CSS不支持，那为了隔绝掉这个影响，可以用些小办法，比如借助事件，当上层打开时，通过事件通知到下层的组件，将下层组件的overflow属性改掉，从而取消掉下层组件的滑动，当上层关掉时，同样通过事件通知恢复下层的滚动功能<br>我之前有次做微信上那种介绍网页，就是一页一页可以上下滑动的，但向下滑的时候，会优先触发微信浏览器的默认行为，就是整个浏览窗被向下拖动了，后来用这段代码搞定<br>vue component中，<br>created() {<br>    var overscroll = function(el) {<br>      el.addEventListener(‘touchstart’, function() {<br>        var top = el.scrollTop<br>          , totalScroll = el.scrollHeight<br>          , currentScroll = top + el.offsetHeight;<br>        //If we’re at the top or the bottom of the containers<br>        //scroll, push up or down one pixel.<br>        //<br>        //this prevents the scroll from “passing through” to<br>        //the body.<br>        if(top === 0) {<br>          el.scrollTop = 1;<br>        } else if(currentScroll === totalScroll) {<br>          el.scrollTop = top - 1;<br>        }<br>      });<br>      el.addEventListener(‘touchmove’, function(evt) {<br>        //if the content is actually scrollable, i.e. the content is long enough<br>        //that scrolling can occur<br>        if(el.offsetHeight &lt; el.scrollHeight)<br>          evt._isScroller = true;<br>      });<br>    }<br>    setTimeout(() =&gt; {<br>      overscroll(document.querySelector(‘.needScroll’));<br>    }, 500);</p>
+<pre><code>document.body.addEventListener(&apos;touchmove&apos;, function(evt) {
+  //In this case, the default behavior is scrolling the body, which
+  //would result in an overflow.  Since we don&apos;t want that, we preventDefault.
+  if(!evt._isScroller) {
+    evt.preventDefault();
+  }
+});
+</code></pre><p>  },</p>
+<p>//避免影响其他页面<br>beforeRouteLeave(to, from, next) {<br>  console.log(‘leave intro’);<br>  let scrollDiv =  document.querySelector(‘.needScroll’);<br>  if(scrollDiv) {<br>    scrollDiv.addEventListener(‘touchstart’, function(){});<br>    scrollDiv.addEventListener(‘touchmove’, function(){});<br>  }<br>  document.body.addEventListener(‘touchmove’, function(){});<br>  next();<br>},</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/03/28/scrollChaining/" data-id="cjfjfbif70003h55bnteqerod" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/03/28/scrollChaining/" data-id="cjfkvz1um0003225b58td957g" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript-CSS/">Javascript, CSS</a></li></ul>
