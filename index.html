@@ -109,15 +109,18 @@ server {
 
 }
 </code></pre><p>}</p>
-<p>如果很多项目需要nginx，觉得相互影响，也可以写Dockerfile，让各个项目启一个nginx的docker container，这里也备份一份，<br>Dockerfile</p>
+<p>如果很多项目需要nginx，觉得相互影响，也可以写Dockerfile，让各个项目启一个nginx的docker container，这里也备份一份，</p>
+<p>Dockerfile</p>
 <p>FROM nginx<br>MAINTAINER Jar <a href="mailto:jarancn@gmail.com" target="_blank" rel="noopener">jarancn@gmail.com</a><br>COPY docker/nginx.conf /etc/nginx/conf.d/</p>
 <p>Dockerfile.sh</p>
 <p>#!/usr/bin/env bash<br>docker rmi -f DOCKER_IMAGE_NAME | true<br>docker build –rm -t DOCKER_IMAGE_NAME -f docker/Dockerfile .<br>docker rm -f DOCKER_CONTAINER_NAME | true<br>docker run -p 8030:80 –name DOCKER_CONTAINER_NAME -v /Users/XXX/project/dist:/usr/share/nginx/html -d DOCKER_IMAGE_NAME</p>
+<p>这里做了一个挂载，如果只是稳定的跑起来，也可以在Dockerfile中把dist拷进去</p>
+<p>COPY dist /usr/share/nginx/html</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/18/nginxSetup/" data-id="cjg4sp6mr0004e25b0leykg8m" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/04/18/nginxSetup/" data-id="cjg4st23a0000fq5b8rn51x0v" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
@@ -162,7 +165,7 @@ server {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/08/webpackMutiModules/" data-id="cjg4sp6mw0007e25bac1wpqqv" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/04/08/webpackMutiModules/" data-id="cjg4st23l0006fq5bkq4lop7i" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -200,7 +203,7 @@ server {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/02/com/" data-id="cjg4sp6lz0000e25b7j6cn639" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/04/02/com/" data-id="cjg4st23e0001fq5bwwzdra9w" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -236,7 +239,7 @@ server {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/02/dom/" data-id="cjg4sp6mm0001e25bj5efd5c3" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/04/02/dom/" data-id="cjg4st23i0004fq5b0zzvr2nw" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -333,7 +336,7 @@ server {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/03/29/zindex/" data-id="cjg4sp6mx0008e25bc0d4r59k" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/03/29/zindex/" data-id="cjg4st23n000afq5bdxhhek1c" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -392,7 +395,7 @@ server {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/03/28/scrollChaining/" data-id="cjg4sp6mp0003e25bpff3w7q8" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/03/28/scrollChaining/" data-id="cjg4st23k0005fq5b36ndxz5r" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>

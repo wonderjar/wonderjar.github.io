@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://wonderjar.me/2018/04/18/nginxSetup/index.html">
 <meta property="og:site_name" content="Wonderjar&#39;s Blog">
 <meta property="og:description" content="因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询 events {    worker_connections 1024;} http { include mime.types; default_type application/octet-stream;  server {     listen 8080 default_server;      root /XXX;">
-<meta property="og:updated_time" content="2018-04-18T07:48:11.512Z">
+<meta property="og:updated_time" content="2018-04-18T07:51:13.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx基本配置备份">
 <meta name="twitter:description" content="因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询 events {    worker_connections 1024;} http { include mime.types; default_type application/octet-stream;  server {     listen 8080 default_server;      root /XXX;">
@@ -112,15 +112,18 @@ server {
 
 }
 </code></pre><p>}</p>
-<p>如果很多项目需要nginx，觉得相互影响，也可以写Dockerfile，让各个项目启一个nginx的docker container，这里也备份一份，<br>Dockerfile</p>
+<p>如果很多项目需要nginx，觉得相互影响，也可以写Dockerfile，让各个项目启一个nginx的docker container，这里也备份一份，</p>
+<p>Dockerfile</p>
 <p>FROM nginx<br>MAINTAINER Jar <a href="mailto:jarancn@gmail.com" target="_blank" rel="noopener">jarancn@gmail.com</a><br>COPY docker/nginx.conf /etc/nginx/conf.d/</p>
 <p>Dockerfile.sh</p>
 <p>#!/usr/bin/env bash<br>docker rmi -f DOCKER_IMAGE_NAME | true<br>docker build –rm -t DOCKER_IMAGE_NAME -f docker/Dockerfile .<br>docker rm -f DOCKER_CONTAINER_NAME | true<br>docker run -p 8030:80 –name DOCKER_CONTAINER_NAME -v /Users/XXX/project/dist:/usr/share/nginx/html -d DOCKER_IMAGE_NAME</p>
+<p>这里做了一个挂载，如果只是稳定的跑起来，也可以在Dockerfile中把dist拷进去</p>
+<p>COPY dist /usr/share/nginx/html</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/18/nginxSetup/" data-id="cjg4sp6mr0004e25b0leykg8m" class="article-share-link">Teilen</a>
+      <a data-url="http://wonderjar.me/2018/04/18/nginxSetup/" data-id="cjg4st23a0000fq5b8rn51x0v" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
