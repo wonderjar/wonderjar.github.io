@@ -5,19 +5,14 @@
   
 
   
-  <title>Nginx基本配置备份 | Wonderjar&#39;s Blog</title>
+  <title>Tag: Webpack | Wonderjar&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询 events {    worker_connections 1024;} http { include mime.types; default_type application/octet-stream;  server {     listen 8080 default_server;      root /XXX;">
-<meta name="keywords" content="Nginx">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Nginx基本配置备份">
-<meta property="og:url" content="http://wonderjar.me/2018/04/18/nginxSetup/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Wonderjar&#39;s Blog">
+<meta property="og:url" content="http://wonderjar.me/tags/Webpack/index.html">
 <meta property="og:site_name" content="Wonderjar&#39;s Blog">
-<meta property="og:description" content="因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询 events {    worker_connections 1024;} http { include mime.types; default_type application/octet-stream;  server {     listen 8080 default_server;      root /XXX;">
-<meta property="og:updated_time" content="2018-04-19T07:32:54.841Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nginx基本配置备份">
-<meta name="twitter:description" content="因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询 events {    worker_connections 1024;} http { include mime.types; default_type application/octet-stream;  server {     listen 8080 default_server;      root /XXX;">
+<meta name="twitter:title" content="Wonderjar&#39;s Blog">
   
     <link rel="alternate" href="/atom.xml" title="Wonderjar&#39;s Blog" type="application/atom+xml">
   
@@ -64,87 +59,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-nginxSetup" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/18/nginxSetup/" class="article-date">
-  <time datetime="2018-04-18T07:39:38.000Z" itemprop="datePublished">2018-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Nginx基本配置备份
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/04/08/webpackMutiModules/" class="archive-article-date">
+  <time datetime="2018-04-08T02:58:43.000Z" itemprop="datePublished">Apr 8</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/04/08/webpackMutiModules/">webpack多入口文件打包</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询</p>
-<p>events {<br>    worker_connections 1024;<br>}</p>
-<p>http {</p>
-<pre><code>include mime.types;
-default_type application/octet-stream;
-
-server {
-    listen 8080 default_server;
-
-    root /XXX;
-
-    location / {
-        index index.html;
-        try_files $uri $uri/ /index.html;
-    }
-
-    location ^~ /api/ {
-        proxy_pass http://127.0.0.1:8081/;
-    }
-
-}
-</code></pre><p>}</p>
-<p>如果很多项目需要nginx，觉得相互影响，也可以写Dockerfile，让各个项目启一个nginx的docker container，这里也备份一份，</p>
-<p>Dockerfile</p>
-<p>FROM nginx<br>MAINTAINER Jar <a href="mailto:jarancn@gmail.com" target="_blank" rel="noopener">jarancn@gmail.com</a><br>COPY docker/nginx.conf /etc/nginx/conf.d/</p>
-<p>Dockerfile.sh</p>
-<p>#!/usr/bin/env bash<br>docker rmi -f DOCKER_IMAGE_NAME | true<br>docker build –rm -t DOCKER_IMAGE_NAME -f docker/Dockerfile .<br>docker rm -f DOCKER_CONTAINER_NAME | true<br>docker run -p 8030:80 –name DOCKER_CONTAINER_NAME -v /Users/XXX/project/dist:/usr/share/nginx/html -d DOCKER_IMAGE_NAME</p>
-<p>这里做了一个挂载，如果只是稳定的跑起来，也可以在Dockerfile中把dist拷进去</p>
-<p>COPY dist /usr/share/nginx/html</p>
-<p>nginx相关命令也记一个<br>./sbin/nginx -s reload|reopen|stop|quit -c /opt/nginx/nginx.conf</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/18/nginxSetup/" data-id="cjg67l7tg0002e85bfu9arijm" class="article-share-link">Compartir</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2018/04/08/webpackMutiModules/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Viejo</strong>
-      <div class="article-nav-title">webpack多入口文件打包</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         
