@@ -10,7 +10,7 @@
   
   <title>
     
-      Wonderjar&#39;s Blog
+      Tags | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,60 +138,99 @@
 </header>
 
     <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+  <h2>Tags</h2>
+  <p class="post-date">标签检索</p>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2018
-  </h1>
-  <div class="section-list">
+<main class="app-body">
+  <div id="tag-cloud">
     
+      <a class="tag0" data-name="tag-Nginx">Nginx</a>
     
-      <div class="section-list-item">
-        <a href="/2018/04/18/nginxSetup/" class="archive-title">Nginx基本配置备份</a>
-        <p class="archive-date">04-18</p>
-      </div>
+      <a class="tag1" data-name="tag-Javascript">Javascript</a>
     
-      <div class="section-list-item">
-        <a href="/2018/04/08/webpackMutiModules/" class="archive-title">webpack多入口文件打包</a>
-        <p class="archive-date">04-08</p>
-      </div>
+      <a class="tag1" data-name="tag-CSS">CSS</a>
     
-      <div class="section-list-item">
-        <a href="/2018/04/02/com/" class="archive-title">com</a>
-        <p class="archive-date">04-02</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/04/02/dom/" class="archive-title">dom</a>
-        <p class="archive-date">04-02</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/03/29/zindex/" class="archive-title">zindex堆叠问题</a>
-        <p class="archive-date">03-29</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/03/28/scrollChaining/" class="archive-title">ScrollChaining链式滑动的解决办法</a>
-        <p class="archive-date">03-28</p>
-      </div>
+      <a class="tag1" data-name="tag-Webpack">Webpack</a>
     
   </div>
-</section>
   
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-Nginx">Nginx</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/04/18/nginxSetup/">Nginx基本配置备份</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-Javascript">Javascript</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/03/29/zindex/">zindex堆叠问题</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/04/08/webpackMutiModules/">webpack多入口文件打包</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-CSS">CSS</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/03/29/zindex/">zindex堆叠问题</a>
+          </li>
+        </ul>
+        
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="tag-list">
+      <h3 class="tag-name" id="tag-Webpack">Webpack</h3>
+      
+        <ul class="tag-preview">
+          <li>
+            <a href="/2018/04/08/webpackMutiModules/">webpack多入口文件打包</a>
+          </li>
+        </ul>
+        
+    </div>
+    
 </main>
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/archives/2018/04/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
+    var url = 'http://wonderjar.me/tags/index.html'
+    $('#article-banner').geopattern(url)
+    $('.header').removeClass('fixed-header')
+
+    var tag = location.hash.replace('#', '')
+    if (tag) {
+      var tagId = "#tag-" + tag;
+      $("html, body").animate({
+        scrollTop: $(tagId).offset().top 
+      }, 400)
+    }
   })();
 </script>
     <div class="scroll-top">

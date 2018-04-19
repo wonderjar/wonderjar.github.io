@@ -1,522 +1,325 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="WonderJar&#39;s blog">
+  <meta name="keyword" content="Code">
   
-
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-  <title>Wonderjar&#39;s Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Wonderjar&#39;s Blog">
-<meta property="og:url" content="http://wonderjar.me/index.html">
-<meta property="og:site_name" content="Wonderjar&#39;s Blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wonderjar&#39;s Blog">
-  
-    <link rel="alternate" href="/atom.xml" title="Wonderjar&#39;s Blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
+  <title>
+    
+      Wonderjar&#39;s Blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
 </head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Wonderjar&#39;s Blog</a>
-      </h1>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Wonderjar's Blog</span>
+    </a>
+    <ul class="right-list">
       
+        <li class="list-item">
+          
+            <a href="/" class="item-link active">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+    <div class="menu-mask">
+      <ul class="menu-list">
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://wonderjar.me"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-nginxSetup" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/18/nginxSetup/" class="article-date">
-  <time datetime="2018-04-18T07:39:38.000Z" itemprop="datePublished">2018-04-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/18/nginxSetup/">Nginx基本配置备份</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询</p>
-<p>events {<br>    worker_connections 1024;<br>}</p>
-<p>http {</p>
-<pre><code>include mime.types;
-default_type application/octet-stream;
-
-server {
-    listen 8080 default_server;
-
-    root /XXX;
-
-    location / {
-        index index.html;
-        try_files $uri $uri/ /index.html;
-    }
-
-    location ^~ /api/ {
-        proxy_pass http://127.0.0.1:8081/;
-    }
-
-}
-</code></pre><p>}</p>
-<p>如果很多项目需要nginx，觉得相互影响，也可以写Dockerfile，让各个项目启一个nginx的docker container，这里也备份一份，</p>
-<p>Dockerfile</p>
-<p>FROM nginx<br>MAINTAINER Jar <a href="mailto:jarancn@gmail.com" target="_blank" rel="noopener">jarancn@gmail.com</a><br>COPY docker/nginx.conf /etc/nginx/conf.d/</p>
-<p>Dockerfile.sh</p>
-<p>#!/usr/bin/env bash<br>docker rmi -f DOCKER_IMAGE_NAME | true<br>docker build –rm -t DOCKER_IMAGE_NAME -f docker/Dockerfile .<br>docker rm -f DOCKER_CONTAINER_NAME | true<br>docker run -p 8030:80 –name DOCKER_CONTAINER_NAME -v /Users/XXX/project/dist:/usr/share/nginx/html -d DOCKER_IMAGE_NAME</p>
-<p>这里做了一个挂载，如果只是稳定的跑起来，也可以在Dockerfile中把dist拷进去</p>
-<p>COPY dist /usr/share/nginx/html</p>
-<p>nginx相关命令也记一个<br>./sbin/nginx -s reload|reopen|stop|quit -c /opt/nginx/nginx.conf</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/18/nginxSetup/" data-id="cjg67l7tg0002e85bfu9arijm" class="article-share-link">Compartir</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-webpackMutiModules" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/08/webpackMutiModules/" class="article-date">
-  <time datetime="2018-04-08T02:58:43.000Z" itemprop="datePublished">2018-04-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/08/webpackMutiModules/">webpack多入口文件打包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#分业务模块打包 vs 多入口文件打包<br>正如我标题所说，我觉得首先要说清楚这两个概念。<br>分业务模块打包，是说在webpack的entry中， 定义多个来源<br>  entry: {<br>    main: ‘./src/modules/login.js’,<br>    home: ‘./src/modules/home.js’<br>  },<br>这样会打出来多个js，比如main.bundle.js, home.bundle.js，然后index.html会同时引用这两个js<br>我觉得这样做的好处就是可以将代码按照业务模块划分，之后打包可以根绝需求只选择需要的业务模块进行打包<br>多入口文件打包，在我之前项目中，有这样的情况，从微信公众号下方按钮会打开我们的网页，但每个按钮打开的网页都只是部分网页且无法直接跳转到另一部分的网页，那么其实打开一个按钮就不需要加载一个包含所有页面的单页应用<br>这样的话，就可以编写多个入口文件，分开打包，仅仅打包各自所需的路由和页面，这样打出来会有多个index.html以及其中各自引用的bundle.js</p>
-<p>#多入口文件打包<br>基本思路就是根据不同入口文件创建不同的webpack config，指定不同的entry, output, plugins等，然后多运行几遍webpack<br>entry: { main: path.resolve(<strong>dirname, ‘../src/views/entry1.js’) },<br>output: {<br>    path: path.resolve(</strong>dirname, ‘../dist’),<br>    filename: ‘entry1_target’ + ‘.[hash].bundle.js’<br>},<br>plugins: [<br>    new HtmlWebpackPlugin({<br>        title: ‘entry1’,<br>        filename: ‘entry1_target.html’,<br>        template: path.resolve(__dirname, ‘../src/html/entry1.html’)<br>    })<br>]</p>
-<p>#parallel-webpack<br>继续上边的基本思路，因为要多运行几次webpack，有这个叫parallel-webpack的工具，可以并行的执行多次打包，它其中用到的一个概念是variants，就根据不同variant编写你的不同打包策略即可</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/08/webpackMutiModules/" data-id="cjg67l7tr0008e85bav1nkrm0" class="article-share-link">Compartir</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-com" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/02/com/" class="article-date">
-  <time datetime="2018-04-02T02:38:40.000Z" itemprop="datePublished">2018-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/com/">com</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/02/com/" data-id="cjg67l7ta0000e85bi0rdtds1" class="article-share-link">Compartir</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-dom" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/02/dom/" class="article-date">
-  <time datetime="2018-04-02T02:38:35.000Z" itemprop="datePublished">2018-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/02/dom/">dom</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/04/02/dom/" data-id="cjg67l7tj0003e85btqetlhba" class="article-share-link">Compartir</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-zindex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/29/zindex/" class="article-date">
-  <time datetime="2018-03-29T03:06:20.000Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/29/zindex/">zindex堆叠问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##不一定需要zindex<br>首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。<br>但对于这几类，也不是总需要zindex，我觉得有两点需要知道，<br>1.非static定位的元素有一个隐式的层级，居于static定位元素之上<br>2.html中后边的元素有一个隐式的层级，居于前边元素之上<br>3.其实这个也算后来居上，子元素居于父元素之上<br>比如运行这段html，<br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
-        &lt;div style=&quot;width: 200px; height: 200px; background-color: red; position: absolute;&quot;&gt;
-        &lt;/div&gt;
-        &lt;div style=&quot;width: 100px; height: 300px; background-color: yellow;&quot;&gt;
-        &lt;/div&gt;
-        &lt;div style=&quot;width: 300px; height: 100px; background-color: blue; position: relative; bottom: 300px;&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;</code><br>效果是这样，<br><img src="/images/overlay.png" width="300px" height="300px"></p>
-<p>#zindex作用<br>好了，当我们确实需要调整层级的时候，zindex就能发挥作用<br>数字越大越在上，这个很简单，但需要明确定位到底是以什么作为参考定位<br>先说结论，当我们要比较两个dom节点，那么从它们自身开始向父节点（不超过他们的共同父节点）寻找，找到各自第一个非static定位且设置过zindex的节点，然后比较他们的zindex，没有视为0，先后顺序同样有隐式层级<br>可以用下面三段代码来测试这一点<br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
-        &lt;div style=&quot;width: 200px; height: 200px; background-color: red; position: absolute;&quot;&gt;
-            &lt;div style=&quot;width: 100px; height: 100px; background-color: yellow; z-index: 1;&quot;&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div style=&quot;width: 300px; height: 100px; background-color: blue; position: absolute; top: 50px;&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;</code><br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
-        &lt;div style=&quot;width: 200px; height: 200px; background-color: red; position: absolute;&quot;&gt;
-            &lt;div style=&quot;width: 100px; height: 100px; background-color: yellow; z-index: 1; position: absolute;&quot;&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div style=&quot;width: 300px; height: 100px; background-color: blue; position: absolute; top: 50px;&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;</code><br><code>&lt;div style=&quot;width: 300px; height: 300px; border: 2px solid black; position: relative;&quot;&gt;
-        &lt;div style=&quot;width: 200px; height: 200px; background-color: red; position: absolute; z-index: 0;&quot;&gt;
-            &lt;div style=&quot;width: 100px; height: 100px; background-color: yellow; z-index: 1; position: absolute;&quot;&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div style=&quot;width: 300px; height: 100px; background-color: blue; position: absolute; top: 50px;&quot;&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;</code></p>
-<p>#可能引起zindex混乱的原因<br>上面说道的，其实还只是层叠中的一小部分东西。<br>说到要比较两个节点，其实是必须在同一个层叠上下文中去比。<br>这个层叠上下文就是两个节点的共同父节点所在的层叠上下文，为了找到这两个节点在这个层叠上下文中的位置，需要从这两个节点开始各自往上找（最远不能到公共父节点），找到最后一个能产生层叠上下文的节点，然后就比较这两个节点的位置。<br>这里有点子凭父贵或者子凭父贫的意思，就是如果子节点处在一个很下层的层叠上下文中，当它去上层比较时，其实只看它在最上层的层叠上下文中所处的位置。</p>
-<p>叠加上下文是什么？<br>Reference <a href="https://www.bennadel.com/blog/3371-stacking-context-is-the-key-to-understanding-the-css-z-index.htm" target="_blank" rel="noopener">https://www.bennadel.com/blog/3371-stacking-context-is-the-key-to-understanding-the-css-z-index.htm</a><br>It quarantines the CSS z-index values of its descendant nodes. In other words, it prevents the z-index values in the local DOM tree from interacting with the layering outside of the local DOM tree. And, from the larger document perspective, all elements within a stacking context are treated as if they have the same z-index:</p>
-<p>叠加上下文怎么产生？<br>Reference <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context</a><br>The stacking context<br>In the previous part of this article, Using z-index, the rendering order of certain elements is influenced by their z-index value. This occurs because these elements have special properties which cause them to form a stacking context.</p>
-<p>A stacking context is formed, anywhere in the document, by any element in the following scenarios:</p>
-<p>Root element of document (HTML).</p>
-<ul>
-<li>Element with a position value “absolute” or “relative” and z-index value other than “auto”.</li>
-<li>Element with a position value “fixed” or “sticky” (sticky for all mobile browsers, but not older desktop).</li>
-<li>Element that is a child of a flex (flexbox) container, with z-index value other than “auto”.</li>
-<li>Element with a opacity value less than 1 (See the specification for opacity).</li>
-<li>Element with a mix-blend-mode value other than “normal”.</li>
-<li>Element with any of the following properties with value other than “none”:<ul>
-<li>transform</li>
-<li>filter</li>
-<li>perspective</li>
-<li>clip-path</li>
-<li>mask / mask-image / mask-border</li>
-</ul>
-</li>
-<li>Element with a isolation value “isolate”.</li>
-<li>Element with a -webkit-overflow-scrolling value “touch”.</li>
-<li>Element with a will-change value specifying any property that would create a stacking context on non-initial value (see this post).</li>
-</ul>
-<p>Within a stacking context, child elements are stacked according to the same rules previously explained. Importantly, the z-index values of its child stacking contexts only have meaning in this parent. Stacking contexts are treated atomically as a single unit in the parent stacking context.</p>
-<p>在一个层叠上下文中，元素的顺序又是什么？<br>Reference <a href="http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/</a><br>从上到下，<br>正zindex<br>zindex:auto/zindex:0/不依赖zindex的层叠上下文<br>inline/inline-block水平盒子<br>float浮动盒子<br>block块盒子<br>负zindex<br>层叠上下文，background/border</p>
-<p>要注意其中层叠上下文本身居于最下</p>
-<p>#组件思考<br>有时一个很深层的组件需要一个弹出层，若是弹出层设计在这个深层组件中，也许会受到父组件设定层叠上下文的影响，就没法展示一个全屏最上层的弹出层，不是”坑爹”，而是被”爹坑”。<br>所以没必要的时候不要滥用zindex，要看创建一个新的层叠上下文会带来的负面影响<br>另一方面，可以做一些公共的弹出层组件放在上层，通过事件的方式触发弹出层</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/03/29/zindex/" data-id="cjg67l7to0006e85b8p046yms" class="article-share-link">Compartir</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-scrollChaining" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/28/scrollChaining/" class="article-date">
-  <time datetime="2018-03-28T08:29:35.000Z" itemprop="datePublished">2018-03-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##滑动传递<br>滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样</p>
-<p><div style="text-align: left;"><br>    <video controls="controls" src="/videos/chatbox-chaining.mp4" style="width: 150px; height: 300px;"><br>    </video><br></div><br>如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它</p>
-<p>##边缘滑动传递<br>这样确实工作，但接下里会发现另一个问题，当上层滚动到边缘之后，这个滚动又被传递到了下层，比如这样</p>
-<p><div style="text-align: left;"><br>    <video controls="controls" src="/videos/modal-off.mp4" style="width: 450px; height: 300px;"><br>    </video><br></div><br>为什么还会向外传递滑动，不是已经prevent了?<br>这是因为当没有滑动到边界时，当前overflow: scroll的元素能”消化”这个滑动，会触发滑动事件，但到了边界之后，当前元素不能”消化”这个滑动，就由它的支持scroll的父元素来”消化”这个滑动<br>对于这个行为，IE过去就有一个CSS属性</p>
-<blockquote>
-<p>-ms-scroll-chaining: chained | none<br>Specifies the scrolling behavior that occurs when a user hits the scroll limit during a manipulation.<br>而在CSS3中，也终于有了这一增强，<br>The overscroll-behavior property is a new CSS feature that controls the behavior of what happens when you over-scroll a container (including the page itself). You can use it to cancel scroll chaining, disable/customize the pull-to-refresh action, disable rubberbanding effects on iOS (when Safari implements overscroll-behavior), and more. The best part is that using overscroll-behavior does not adversely affect page performance like the hacks mentioned in the intro!<br>The property takes three possible values:<br>auto - Default. Scrolls that originate on the element may propagate to ancestor elements.<br>contain - prevents scroll chaining. Scrolls do not propagate to ancestors but local effects within the node are shown. For example, the overscroll glow effect on Android or the rubberbanding effect on iOS which notifies the user when they’ve hit a scroll boundary. Note: using overscroll-behavior: contain on the html element prevents overscroll navigation actions.<br>none - same as contain but it also prevents overscroll effects within the node itself (e.g. Android overscroll glow or iOS rubberbanding).<br>好了，有了这个属性，看起来问题被很优雅地解决了，不过不幸的是，在我测试下，我的手机就不支持这个CSS属性</p>
-</blockquote>
-<p>##Tricks<br>CSS不支持，那为了隔绝掉这个影响，可以用些小办法，比如借助事件，当上层打开时，通过事件通知到下层的组件，将下层组件的overflow属性改掉，从而取消掉下层组件的滑动，当上层关掉时，同样通过事件通知恢复下层的滚动功能<br>我之前有次做微信上那种介绍网页，就是一页一页可以上下滑动的，但向下滑的时候，会优先触发微信浏览器的默认行为，就是整个浏览窗被向下拖动了，后来用这段代码搞定<br>vue component中，<br>created() {<br>    var overscroll = function(el) {<br>      el.addEventListener(‘touchstart’, function() {<br>        var top = el.scrollTop<br>          , totalScroll = el.scrollHeight<br>          , currentScroll = top + el.offsetHeight;<br>        //If we’re at the top or the bottom of the containers<br>        //scroll, push up or down one pixel.<br>        //<br>        //this prevents the scroll from “passing through” to<br>        //the body.<br>        if(top === 0) {<br>          el.scrollTop = 1;<br>        } else if(currentScroll === totalScroll) {<br>          el.scrollTop = top - 1;<br>        }<br>      });<br>      el.addEventListener(‘touchmove’, function(evt) {<br>        //if the content is actually scrollable, i.e. the content is long enough<br>        //that scrolling can occur<br>        if(el.offsetHeight &lt; el.scrollHeight)<br>          evt._isScroller = true;<br>      });<br>    }<br>    setTimeout(() =&gt; {<br>      overscroll(document.querySelector(‘.needScroll’));<br>    }, 500);</p>
-<pre><code>document.body.addEventListener(&apos;touchmove&apos;, function(evt) {
-  //In this case, the default behavior is scrolling the body, which
-  //would result in an overflow.  Since we don&apos;t want that, we preventDefault.
-  if(!evt._isScroller) {
-    evt.preventDefault();
-  }
-});
-</code></pre><p>  },</p>
-<p>//避免影响其他页面<br>beforeRouteLeave(to, from, next) {<br>  console.log(‘leave intro’);<br>  let scrollDiv =  document.querySelector(‘.needScroll’);<br>  if(scrollDiv) {<br>    scrollDiv.addEventListener(‘touchstart’, function(){});<br>    scrollDiv.addEventListener(‘touchmove’, function(){});<br>  }<br>  document.body.addEventListener(‘touchmove’, function(){});<br>  next();<br>},</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://wonderjar.me/2018/03/28/scrollChaining/" data-id="cjg67l7tp0007e85bcezr48qb" class="article-share-link">Compartir</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Javascript/">Javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/04/18/nginxSetup/">Nginx基本配置备份</a>
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link mobile-active">Home</a>
+            
           </li>
         
-          <li>
-            <a href="/2018/04/08/webpackMutiModules/">webpack多入口文件打包</a>
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
           </li>
         
-          <li>
-            <a href="/2018/04/02/com/">com</a>
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
           </li>
         
-          <li>
-            <a href="/2018/04/02/dom/">dom</a>
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
           </li>
         
-          <li>
-            <a href="/2018/03/29/zindex/">zindex堆叠问题</a>
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
           </li>
         
       </ul>
     </div>
   </div>
+</header>
 
+    <main class="app-body">
   
-</aside>
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/04/18/nginxSetup/">Nginx基本配置备份</a>
+      </h2>
+      <p class="article-date">April 18, 2018</p>
+      
+        
+  <a href="/tags#Nginx" >
+    <span class="tag-code">Nginx</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询
+events {    worker_connections 1024;}
+http {
+include mime.types;
+default_type application/octet-stream;
+
+server { ...
         
       </div>
-      <footer id="footer">
+      <a class="more" href="/2018/04/18/nginxSetup/">Read more</a>
+    </article>
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 Jar<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/04/08/webpackMutiModules/">webpack多入口文件打包</a>
+      </h2>
+      <p class="article-date">April 8, 2018</p>
+      
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+  <a href="/tags#Webpack" >
+    <span class="tag-code">Webpack</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          #分业务模块打包 vs 多入口文件打包正如我标题所说，我觉得首先要说清楚这两个概念。分业务模块打包，是说在webpack的entry中， 定义多个来源  entry: {    main: ‘./src/modules/login.js’,    home: ‘./src/modules/h ...
+        
+      </div>
+      <a class="more" href="/2018/04/08/webpackMutiModules/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/04/02/com/">com</a>
+      </h2>
+      <p class="article-date">April 2, 2018</p>
+      
+      <div class="article-summary">
+        
+          
+        
+      </div>
+      <a class="more" href="/2018/04/02/com/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/04/02/dom/">dom</a>
+      </h2>
+      <p class="article-date">April 2, 2018</p>
+      
+      <div class="article-summary">
+        
+          
+        
+      </div>
+      <a class="more" href="/2018/04/02/dom/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/29/zindex/">zindex堆叠问题</a>
+      </h2>
+      <p class="article-date">March 29, 2018</p>
+      
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          ##不一定需要zindex首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。但对于这几类，也不是总需要zindex，我觉得有两点需要知道，1.非static定位的元素有一个隐式的层级，居于static定位元素之上2.html中后边的元素有 ...
+        
+      </div>
+      <a class="more" href="/2018/03/29/zindex/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
+      </h2>
+      <p class="article-date">March 28, 2018</p>
+      
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          ##滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样
+        如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它
+##边缘滑动传递这样确实工作，但接下里会发 ...
+        
+      </div>
+      <a class="more" href="/2018/03/28/scrollChaining/">Read more</a>
+    </article>
+  
+
+  
+</main>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//lib.sinaapp.com/js/jquery/2.0.3/jquery-2.0.3.min.js"></script>
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
 
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
 
 <script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
+  </body>
 </html>
