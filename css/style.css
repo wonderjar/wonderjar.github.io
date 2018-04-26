@@ -359,7 +359,7 @@ h2.article-head {
   }
 }
 .logo {
-  background: url("https://avatar.csdn.net/3/0/A/1_liu__shu.jpg");
+  background: url("/images/avator.jpg");
   background-size: contain;
   width: 40px;
   height: 40px;
