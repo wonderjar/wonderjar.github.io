@@ -176,7 +176,7 @@ server {
 <p>#!/usr/bin/env bash<br>docker rmi -f DOCKER_IMAGE_NAME | true<br>docker build –rm -t DOCKER_IMAGE_NAME -f docker/Dockerfile .<br>docker rm -f DOCKER_CONTAINER_NAME | true<br>docker run -p 8030:80 –name DOCKER_CONTAINER_NAME -v /Users/XXX/project/dist:/usr/share/nginx/html -d DOCKER_IMAGE_NAME</p>
 <p>这里做了一个挂载，如果只是稳定的跑起来，也可以在Dockerfile中把dist拷进去</p>
 <p>COPY dist /usr/share/nginx/html</p>
-<p>nginx相关命令也记一个<br>./sbin/nginx -s reload|reopen|stop|quit -c /opt/nginx/nginx.conf</p>
+<p>nginx相关命令也记一个<br>./sbin/nginx -c /opt/nginx/nginx.conf<br>./sbin/nginx -s reload|reopen|stop|quit -c /opt/nginx/nginx.conf</p>
 </section>
     <!-- Tags START -->
     
