@@ -149,7 +149,7 @@
   <article class="post-article">
     <section class="markdown-content"><p>在Java中，代理模式被提到的很多，通过Proxy.newProxyInstance就可以创建一个出instance的代理，在他做事的之前，之后，或者错误处理<br>这些方方面面都可以进行扩展，通过动态代理，Spring又实现了AOP</p>
 <p>这里扩展说一下代理模式和装饰者模式的小小区别，Java中最有名的装饰者模式大概就是IO的类了，从提供最简易功能的InputeStream，被层层<br>包装出了多个类，比如ByteArrayInputStream,FileInputStream，BufferedInputStream，装饰者模式常常是在原有基础上作扩展，额外提供<br>更多功能，对外来说，功能A，B，经过装饰，就变成了A，B，C，而代理模式通常对外不增加新功能，只是包装修饰原有功能</p>
-<p>为什么要提中间件呢，我觉得中间件也包含了代理模式的思想在其中，中间件的例子实在太多，<br>对于Java，一个URL匹配完成后找到的，<br>Filter - Filter - Servlet - Servlet 是一个中间件的chain<br>对于Express,同样的<br>app.use(function (req, res, next) {}) - app.use - app.use, 一个个app.use是中间件的chain<br>对于Redux,<br>const store = createStore(<br>  app,<br>  applyMiddleware(<br>    rafScheduler,<br>    timeoutScheduler,<br>    thunk,<br>    vanillaPromise,<br>    readyStatePromise,<br>    logger,<br>    crashReporter<br>  )<br>)<br>middleware形成一个chain</p>
+<p>为什么要提中间件(这里指Javscript里常提的中间件，不是Java里常提的中间件)，我觉得中间件也包含了代理模式的思想在其中，中间件的例子实在太多，<br>对于Java，一个URL匹配完成后找到的，<br>Filter - Filter - Servlet - Servlet 是一个中间件的chain<br>对于Express,同样的<br>app.use(function (req, res, next) {}) - app.use - app.use, 一个个app.use是中间件的chain<br>对于Redux,<br>const store = createStore(<br>  app,<br>  applyMiddleware(<br>    rafScheduler,<br>    timeoutScheduler,<br>    thunk,<br>    vanillaPromise,<br>    readyStatePromise,<br>    logger,<br>    crashReporter<br>  )<br>)<br>middleware形成一个chain</p>
 <p>我觉得最重要的来说，中间件的要求就是，只要对外提供的是统一的接口，并且可以chain式调用</p>
 <p>这样说起来，感觉简直和Promise的用法如出一辙啊，但其实有区别，中间件的chain式调用，chain里的每一个元素都可以完全掌控其后chain的执行，<br>比如在其后chain执行完打一个log，而这就是promise的串联不能直接做到的了，promise的chain执行按照顺序一定是从前往后执行的，不会有chain<br>上前面的代码晚于chain上后面的代码执行。我觉得promise帮我们避免了回调陷阱，但其实在执行上的控制减弱了。</p>
 </section>
