@@ -10,7 +10,7 @@
   
   <title>
     
-      React Typescript踩坑记录 | Wonderjar&#39;s Blog
+      代理模式，中间件，Promise | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>React Typescript踩坑记录</h2>
-  <p class="post-date">2018-06-21</p>
+  <h2>代理模式，中间件，Promise</h2>
+  <p class="post-date">2018-06-22</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,18 +147,19 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h3 id="引入React"><a href="#引入React" class="headerlink" title="引入React"></a>引入React</h3><p>使用<br>import React from ‘react’;<br>报错<br>/node_modules/@types/react/index”‘ has no default export.<br>解决办法<br>import * as React from ‘react’;</p>
-<h3 id="引入PropTypes"><a href="#引入PropTypes" class="headerlink" title="引入PropTypes"></a>引入PropTypes</h3><p>import { PropTypes } from ‘react’;<br>解决办法<br>With React 15.5, importing PropTypes from React is deprecated in favour of importing from the new ‘prop-types’ package.<br>Reference<br><a href="https://github.com/react-toolbox/react-toolbox/issues/1410" target="_blank" rel="noopener">https://github.com/react-toolbox/react-toolbox/issues/1410</a></p>
-<h3 id="React-router-dom注入"><a href="#React-router-dom注入" class="headerlink" title="React-router-dom注入"></a>React-router-dom注入</h3><p>当使用withRouter(MyComponent)时<br>Argument of type ‘typeof AppMenu’ is not assignable to parameter of type ‘ComponentType&lt;RouteComponentProps&lt;any, StaticContext&gt;&gt;’.<br>或者是在component里使用react-router-dom注入的属性，比如history<br>Property ‘history’ does not exist on type ‘Readonly&lt;{ children?: ReactNode; }&gt; &amp; Readonly&lt;{}&gt;’.<br>解决办法<br>class MyComponent extends React.Component&lt;RouteComponentProps&lt;{}&gt;, any&gt; { … }<br>export default withRouter(MyComponent)</p>
-<h3 id="require-context"><a href="#require-context" class="headerlink" title="require.context"></a>require.context</h3><p>错误<br>Property ‘context’ does not exist on type ‘NodeRequire’.<br>解决办法<br>yarn add @types/webpack-env</p>
+    <section class="markdown-content"><p>在Java中，代理模式被提到的很多，通过Proxy.newProxyInstance就可以创建一个出instance的代理，在他做事的之前，之后，或者错误处理<br>这些方方面面都可以进行扩展，通过动态代理，Spring又实现了AOP</p>
+<p>这里扩展说一下代理模式和装饰者模式的小小区别，Java中最有名的装饰者模式大概就是IO的类了，从提供最简易功能的InputeStream，被层层<br>包装出了多个类，比如ByteArrayInputStream,FileInputStream，BufferedInputStream，装饰者模式常常是在原有基础上作扩展，额外提供<br>更多功能，对外来说，功能A，B，经过装饰，就变成了A，B，C，而代理模式通常对外不增加新功能，只是包装修饰原有功能</p>
+<p>为什么要提中间件呢，我觉得中间件也包含了代理模式的思想在其中，中间件的例子实在太多，<br>对于Java，一个URL匹配完成后找到的，<br>Filter - Filter - Servlet - Servlet 是一个中间件的chain<br>对于Express,同样的<br>app.use(function (req, res, next) {}) - app.use - app.use, 一个个app.use是中间件的chain<br>对于Redux,<br>const store = createStore(<br>  app,<br>  applyMiddleware(<br>    rafScheduler,<br>    timeoutScheduler,<br>    thunk,<br>    vanillaPromise,<br>    readyStatePromise,<br>    logger,<br>    crashReporter<br>  )<br>)<br>middleware形成一个chain</p>
+<p>我觉得最重要的来说，中间件的要求就是，只要对外提供的是统一的接口，并且可以chain式调用</p>
+<p>这样说起来，感觉简直和Promise的用法如出一辙啊，但其实有区别，中间件的chain式调用，chain里的每一个元素都可以完全掌控其后chain的执行，<br>比如在其后chain执行完打一个log，而这就是promise的串联不能直接做到的了，promise的chain执行按照顺序一定是从前往后执行的，不会有chain<br>上前面的代码晚于chain上后面的代码执行。我觉得promise帮我们避免了回调陷阱，但其实在执行上的控制减弱了。</p>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#-Javascript" >
-    <span class="tag-code">-Javascript</span>
+  <a href="/tags#Design" >
+    <span class="tag-code">Design</span>
   </a>
 
       </div>
@@ -169,20 +170,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/05/24/strangeDollar/">
+      <a class="nav-left" href="/2018/06/21/reactTypescriptPractice/">
         <span class="nav-arrow">← </span>
         
-          混淆的$
+          React Typescript踩坑记录
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/06/22/proxyPattern/">
-        
-          代理模式，中间件，Promise
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -211,7 +205,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入React"><span class="toc-nav-text">引入React</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入PropTypes"><span class="toc-nav-text">引入PropTypes</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#React-router-dom注入"><span class="toc-nav-text">React-router-dom注入</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#require-context"><span class="toc-nav-text">require.context</span></a></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -221,7 +215,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2018/06/21/reactTypescriptPractice/';
+    var url = 'http://wonderjar.me/2018/06/22/proxyPattern/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -277,7 +271,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "React Typescript踩坑记录",
+        id: "代理模式，中间件，Promise",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
