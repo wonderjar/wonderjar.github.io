@@ -149,9 +149,16 @@
   <article class="post-article">
     <section class="markdown-content"><h3 id="引入React"><a href="#引入React" class="headerlink" title="引入React"></a>引入React</h3><p>使用<br>import React from ‘react’;<br>报错<br>/node_modules/@types/react/index”‘ has no default export.<br>解决办法<br>import * as React from ‘react’;</p>
 <h3 id="引入PropTypes"><a href="#引入PropTypes" class="headerlink" title="引入PropTypes"></a>引入PropTypes</h3><p>import { PropTypes } from ‘react’;<br>解决办法<br>With React 15.5, importing PropTypes from React is deprecated in favour of importing from the new ‘prop-types’ package.<br>Reference<br><a href="https://github.com/react-toolbox/react-toolbox/issues/1410" target="_blank" rel="noopener">https://github.com/react-toolbox/react-toolbox/issues/1410</a></p>
-<h3 id="React-router-dom注入"><a href="#React-router-dom注入" class="headerlink" title="React-router-dom注入"></a>React-router-dom注入</h3><p>当使用withRouter(MyComponent)时<br>Argument of type ‘typeof AppMenu’ is not assignable to parameter of type ‘ComponentType&lt;RouteComponentProps&lt;any, StaticContext&gt;&gt;’.<br>或者是在component里使用react-router-dom注入的属性，比如history<br>Property ‘history’ does not exist on type ‘Readonly&lt;{ children?: ReactNode; }&gt; &amp; Readonly&lt;{}&gt;’.<br>解决办法<br>class MyComponent extends React.Component&lt;RouteComponentProps&lt;{}&gt;, any&gt; { … }<br>export default withRouter(MyComponent)</p>
+<h3 id="React-router-dom注入"><a href="#React-router-dom注入" class="headerlink" title="React-router-dom注入"></a>React-router-dom注入</h3><p>当使用withRouter(MyComponent)时<br>Argument of type ‘typeof AppMenu’ is not assignable to parameter of type ‘ComponentType&lt;RouteComponentProps&lt;any, StaticContext&gt;&gt;’.<br>或者是在component里使用react-router-dom注入的属性，比如history<br>Property ‘history’ does not exist on type ‘Readonly&lt;{ children?: ReactNode; }&gt; &amp; Readonly&lt;{}&gt;’.<br>解决办法<br>import { withRouter, RouteComponentProps } from ‘react-router-dom’<br>class MyComponent extends React.Component&lt;RouteComponentProps&lt;{}&gt;, any&gt; { … }<br>export default withRouter(MyComponent)</p>
 <h3 id="require-context"><a href="#require-context" class="headerlink" title="require.context"></a>require.context</h3><p>错误<br>Property ‘context’ does not exist on type ‘NodeRequire’.<br>解决办法<br>yarn add @types/webpack-env</p>
-<h3 id="redux-chunk"><a href="#redux-chunk" class="headerlink" title="redux-chunk"></a>redux-chunk</h3><p>错误<br>Module not found: Can’t resolve ‘redux-thunk’ in </p>
+<h3 id="使用State出错"><a href="#使用State出错" class="headerlink" title="使用State出错"></a>使用State出错</h3><p>错误<br>Property ‘somePropInState’ does not exist on type ‘Readonly&lt;{}&gt;’.<br>原因<br>我的component，一开始是这样使用generics<br>class MyComp extends React.Component&lt;IComponentProps &amp; IStateProps &amp; RouteComponentProps<any> &amp; IDispatchThunkProp<any>&gt;<br>export default withRouter(connect(mapStateToProps)(MyComp))<br>看了React.Component的types定义,<br>class Component&lt;P, S&gt; {<br>        constructor(props: P, context?: any);</any></any></p>
+<pre><code>setState&lt;K extends keyof S&gt;(
+    state: ((prevState: Readonly&lt;S&gt;, props: P) =&gt; (Pick&lt;S, K&gt; | S | null)) | (Pick&lt;S, K&gt; | S | null),
+    callback?: () =&gt; void
+): void;
+
+...
+</code></pre><p>}<br>所以一定是第二个泛型，才是state的类型定义，所以要改成，<br>class MyComp extends React.Component&lt;IComponentProps &amp; RouteComponentProps<any> &amp; IDispatchThunkProp<any>, IStateProps&gt;</any></any></p>
 </section>
     <!-- Tags START -->
     
@@ -212,7 +219,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入React"><span class="toc-nav-text">引入React</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入PropTypes"><span class="toc-nav-text">引入PropTypes</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#React-router-dom注入"><span class="toc-nav-text">React-router-dom注入</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#require-context"><span class="toc-nav-text">require.context</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#redux-chunk"><span class="toc-nav-text">redux-chunk</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入React"><span class="toc-nav-text">引入React</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入PropTypes"><span class="toc-nav-text">引入PropTypes</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#React-router-dom注入"><span class="toc-nav-text">React-router-dom注入</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#require-context"><span class="toc-nav-text">require.context</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用State出错"><span class="toc-nav-text">使用State出错</span></a></li></ol>
     
   </div>
 </aside>
