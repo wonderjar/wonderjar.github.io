@@ -10,7 +10,7 @@
   
   <title>
     
-      Wonderjar&#39;s Blog
+      Table格子高度被其他格子撑大的留白 | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2></h2>
-  <p class="post-date">2018-06-24</p>
+  <h2>Table格子高度被其他格子撑大的留白</h2>
+  <p class="post-date">2018-06-27</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,14 +147,13 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><hr>
-<p>title: webpack多入口文件打包<br>date: 2018-04-08 10:58:43<br>categories: Javascript<br>tags:</p>
-<pre><code>- Javascript
-- Webpack
-</code></pre><p>—s</p>
-<p>#分业务模块打包 vs 多入口文件打包<br>正如我标题所说，我觉得首先要说清楚这两个概念。<br>分业务模块打包，是说在webpack的entry中， 定义多个来源<br>  entry: {<br>    main: ‘./src/modules/login.js’,<br>    home: ‘./src/modules/home.js’<br>  },<br>这样会打出来多个js，比如main.bundle.js, home.bundle.js，然后index.html会同时引用这两个js<br>我觉得这样做的好处就是可以将代码按照业务模块划分，之后打包可以根绝需求只选择需要的业务模块进行打包<br>多入口文件打包，在我之前项目中，有这样的情况，从微信公众号下方按钮会打开我们的网页，但每个按钮打开的网页都只是部分网页且无法直接跳转到另一部分的网页，那么其实打开一个按钮就不需要加载一个包含所有页面的单页应用<br>这样的话，就可以编写多个入口文件，分开打包，仅仅打包各自所需的路由和页面，这样打出来会有多个index.html以及其中各自引用的bundle.js</p>
-<p>#多入口文件打包<br>基本思路就是根据不同入口文件创建不同的webpack config，指定不同的entry, output, plugins等，然后多运行几遍webpack<br>entry: { main: path.resolve(<strong>dirname, ‘../src/views/entry1.js’) },<br>output: {<br>    path: path.resolve(</strong>dirname, ‘../dist’),<br>    filename: ‘entry1_target’ + ‘.[hash].bundle.js’<br>},<br>plugins: [<br>    new HtmlWebpackPlugin({<br>        title: ‘entry1’,<br>        filename: ‘entry1_target.html’,<br>        template: path.resolve(__dirname, ‘../src/html/entry1.html’)<br>    })<br>]</p>
-<p>#parallel-webpack<br>继续上边的基本思路，因为要多运行几次webpack，有这个叫parallel-webpack的工具，可以并行的执行多次打包，它其中用到的一个概念是variants，就根据不同variant编写你的不同打包策略即可</p>
+    <section class="markdown-content"><p>Table格子高度被其他格子撑大后，上下产生留白，而且这种留白不是受padding的控制，就导致内容被竖直居中在中间<br>就像这里，橙色撑不满黄色，<br><img src="/images/tableCellHeight1.png" width="100px" height="100px"><br>如果确保让每个格子的内容都能撑满当前高度，有一个小技巧<br>设置tr height 1px， 然后td height inherit就可以了，如图<br><img src="/images/tableCellHeight2.png" width="100px" height="100px">，<br>示例代码<br>`<br>&lt;!DOCTYPE html&gt;</p>
+<p><html lang="en"></html></p>
+<p><head><br>    <meta charset="UTF-8"><br>    <title>Title</title><br></head></p>
+<p><body></body></p>
+<p><table><br>    <tr><br>        <td>222</td><br>        <td><br>            <div><br>                <div>222</div><br>                <div>222</div><br>            </div><br>        </td><br>        <td><br>            <div><br>                <div>222</div><br>                <div>222</div><br>                <div>222</div><br>            </div><br>        </td><br>        <td><br>            <div><br>                <div>222</div><br>                <div>222</div><br>                <div>222</div><br>                <div>222</div><br>            </div><br>        </td><br>        <td><br>            <div><br>                <div>222</div><br>                <div>222</div><br>                <div>222</div><br>                <div>222</div><br>                <div>222</div><br>            </div><br>        </td><br>    </tr><br></table><br></p>
+<p><style><br>    table tr {<br>        height: 1px;<br>    }<br>    table tr td {<br>        height: inherit;<br>        background-color: yellow;<br>    }<br>    table tr td div {<br>        height: 100%;<br>        display: flex;<br>        flex-direction: column;<br>        justify-content: space-around;<br>        background: orange;<br>    }<br>    table tr td div div {<br>        border: solid black 1px;<br>    }</p>
+<p></style><br><br>`</p>
 </section>
     <!-- Tags START -->
     
@@ -164,17 +163,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/06/22/proxyPattern/">
+      <a class="nav-left" href="/2018/06/24/webpackMutiModules/">
         <span class="nav-arrow">← </span>
         
-          代理模式，中间件，Promise
+          (untitled)
         
       </a>
     
     
-      <a class="nav-right" href="/2018/06/27/tableCellHeight/">
+      <a class="nav-right" href="/2018/06/27/test/">
         
-          Table格子高度被其他格子撑大的留白
+          (untitled)
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -216,7 +215,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2018/06/24/webpackMutiModules/';
+    var url = 'http://wonderjar.me/2018/06/27/tableCellHeight/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -272,7 +271,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "",
+        id: "Table格子高度被其他格子撑大的留白",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {

@@ -65,7 +65,7 @@
       
         <li class="list-item">
           
-            <a href="/" class="item-link">Home</a>
+            <a href="/" class="item-link active">Home</a>
           
         </li>
       
@@ -104,7 +104,7 @@
         
           <li class="menu-item">
             
-              <a href="/" class="menu-link">Home</a>
+              <a href="/" class="menu-link mobile-active">Home</a>
             
           </li>
         
@@ -137,93 +137,72 @@
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+    <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/29/zindex/">zindex堆叠问题</a>
+      </h2>
+      <p class="article-date">March 29, 2018</p>
+      
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          ##不一定需要zindex首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。但对于这几类，也不是总需要zindex，我觉得有两点需要知道，1.非static定位的元素有一个隐式的层级，居于static定位元素之上2.html中后边的元素有 ...
+        
+      </div>
+      <a class="more" href="/2018/03/29/zindex/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
+      </h2>
+      <p class="article-date">March 28, 2018</p>
+      
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样
+        如果不希望滚动传递，最先想到的大概就是监听最上层叠加层的touchmove事件，然后prevent它
+边缘滑动传递这样确实工作，但接下里会发现另一个 ...
+        
+      </div>
+      <a class="more" href="/2018/03/28/scrollChaining/">Read more</a>
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a href="/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a class="unvisible" href="/">Next <span class="page-arrow">→</span></a>
+  
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2018
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2018/06/27/test/" class="archive-title"></a>
-        <p class="archive-date">06-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/06/27/tableCellHeight/" class="archive-title">Table格子高度被其他格子撑大的留白</a>
-        <p class="archive-date">06-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/06/24/webpackMutiModules/" class="archive-title"></a>
-        <p class="archive-date">06-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/06/22/proxyPattern/" class="archive-title">代理模式，中间件，Promise</a>
-        <p class="archive-date">06-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/06/21/reactTypescriptPractice/" class="archive-title">React Typescript踩坑记录</a>
-        <p class="archive-date">06-21</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/05/24/strangeDollar/" class="archive-title">混淆的$</a>
-        <p class="archive-date">05-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/05/14/frontendSpeedUp/" class="archive-title">前端加载优化</a>
-        <p class="archive-date">05-14</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/04/27/verticallyAssign/" class="archive-title">竖直居中</a>
-        <p class="archive-date">04-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/04/25/singleThreadAndWorker/" class="archive-title">从单线程，事件循环聊到Web Worker</a>
-        <p class="archive-date">04-25</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/04/18/nginxSetup/" class="archive-title">Nginx基本配置备份</a>
-        <p class="archive-date">04-18</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/03/29/zindex/" class="archive-title">zindex堆叠问题</a>
-        <p class="archive-date">03-29</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018/03/28/scrollChaining/" class="archive-title">ScrollChaining链式滑动的解决办法</a>
-        <p class="archive-date">03-28</p>
-      </div>
-    
-  </div>
-</section>
   
 </main>
 
-<script>
-  (function () {
-    var url = 'http://wonderjar.me/categories/Frontend/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
-  })();
-</script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
