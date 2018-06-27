@@ -158,7 +158,7 @@
 ): void;
 
 ...
-</code></pre><p>}<br>所以一定是第二个泛型，才是state的类型定义，所以要改成，<br>class MyComp extends React.Component&lt;IComponentProps &amp; RouteComponentProps<any> &amp; IDispatchThunkProp<any>, IStateProps&gt;</any></any></p>
+</code></pre><p>}<br>所以一定是第二个泛型，才是state的类型定义，所以要改成，<br>class MyComp extends React.Component&lt;IComponentProps &amp; RouteComponentProps<any> &amp; IDispatchThunkProp<any>, IStateProps&gt; {<br>    public constructor(props: IComponentProps &amp; RouteComponentProps<any> &amp; IDispatchThunkProp<any>) {<br>        super(props)<br>        this.state = {<br>            somePropInState: ‘test’<br>        }<br>    }<br>}</any></any></any></any></p>
 </section>
     <!-- Tags START -->
     
