@@ -159,6 +159,7 @@
 
 ...
 </code></pre><p>}<br>所以一定是第二个泛型，才是state的类型定义，所以要改成，<br>class MyComp extends React.Component&lt;IComponentProps &amp; RouteComponentProps<any> &amp; IDispatchThunkProp<any>, IStateProps&gt; {<br>    public constructor(props: IComponentProps &amp; RouteComponentProps<any> &amp; IDispatchThunkProp<any>) {<br>        super(props)<br>        this.state = {<br>            somePropInState: ‘test’<br>        }<br>    }<br>}</any></any></any></any></p>
+<h3 id="使用window下的全局变量"><a href="#使用window下的全局变量" class="headerlink" title="使用window下的全局变量"></a>使用window下的全局变量</h3><p>解决办法<br>interface IWindow extends Window {<br>    SompProp: any<br>}<br>declare var window: IWindow;</p>
 </section>
     <!-- Tags START -->
     
@@ -219,7 +220,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入React"><span class="toc-nav-text">引入React</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入PropTypes"><span class="toc-nav-text">引入PropTypes</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#React-router-dom注入"><span class="toc-nav-text">React-router-dom注入</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#require-context"><span class="toc-nav-text">require.context</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用State出错"><span class="toc-nav-text">使用State出错</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入React"><span class="toc-nav-text">引入React</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引入PropTypes"><span class="toc-nav-text">引入PropTypes</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#React-router-dom注入"><span class="toc-nav-text">React-router-dom注入</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#require-context"><span class="toc-nav-text">require.context</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用State出错"><span class="toc-nav-text">使用State出错</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用window下的全局变量"><span class="toc-nav-text">使用window下的全局变量</span></a></li></ol>
     
   </div>
 </aside>
