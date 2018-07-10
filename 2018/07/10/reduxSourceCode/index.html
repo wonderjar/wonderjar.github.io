@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="WonderJar&#39;s blog">
+  <meta name="keyword" content="Code">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      redux源码理解 | Wonderjar&#39;s Blog
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Wonderjar's Blog</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>redux源码理解</h2>
+  <p class="post-date">2018-07-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>index.js<br>export的所有东西，接下来逐一来看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export &#123;</span><br><span class="line">  createStore,</span><br><span class="line">  combineReducers,</span><br><span class="line">  bindActionCreators,</span><br><span class="line">  applyMiddleware,</span><br><span class="line">  compose,</span><br><span class="line">  __DO_NOT_USE__ActionTypes</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="createStore"><a href="#createStore" class="headerlink" title="createStore"></a>createStore</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br></pre></td><td class="code"><pre><span class="line">import $$observable from &apos;symbol-observable&apos;</span><br><span class="line"></span><br><span class="line">import ActionTypes from &apos;./utils/actionTypes&apos;</span><br><span class="line">import isPlainObject from &apos;./utils/isPlainObject&apos;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Creates a Redux store that holds the state tree.</span><br><span class="line"> * The only way to change the data in the store is to call `dispatch()` on it.</span><br><span class="line"> *</span><br><span class="line"> * There should only be a single store in your app. To specify how different</span><br><span class="line"> * parts of the state tree respond to actions, you may combine several reducers</span><br><span class="line"> * into a single reducer function by using `combineReducers`.</span><br><span class="line"> *</span><br><span class="line"> * @param &#123;Function&#125; reducer A function that returns the next state tree, given</span><br><span class="line"> * the current state tree and the action to handle.</span><br><span class="line"> *</span><br><span class="line"> * @param &#123;any&#125; [preloadedState] The initial state. You may optionally specify it</span><br><span class="line"> * to hydrate the state from the server in universal apps, or to restore a</span><br><span class="line"> * previously serialized user session.</span><br><span class="line"> * If you use `combineReducers` to produce the root reducer function, this must be</span><br><span class="line"> * an object with the same shape as `combineReducers` keys.</span><br><span class="line"> *</span><br><span class="line"> * @param &#123;Function&#125; [enhancer] The store enhancer. You may optionally specify it</span><br><span class="line"> * to enhance the store with third-party capabilities such as middleware,</span><br><span class="line"> * time travel, persistence, etc. The only store enhancer that ships with Redux</span><br><span class="line"> * is `applyMiddleware()`.</span><br><span class="line"> *</span><br><span class="line"> * @returns &#123;Store&#125; A Redux store that lets you read the state, dispatch actions</span><br><span class="line"> * and subscribe to changes.</span><br><span class="line"> */</span><br><span class="line">export default function createStore(reducer, preloadedState, enhancer) &#123;</span><br><span class="line">  if (typeof preloadedState === &apos;function&apos; &amp;&amp; typeof enhancer === &apos;undefined&apos;) &#123;</span><br><span class="line">    enhancer = preloadedState</span><br><span class="line">    preloadedState = undefined</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (typeof enhancer !== &apos;undefined&apos;) &#123;</span><br><span class="line">    if (typeof enhancer !== &apos;function&apos;) &#123;</span><br><span class="line">      throw new Error(&apos;Expected the enhancer to be a function.&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return enhancer(createStore)(reducer, preloadedState)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (typeof reducer !== &apos;function&apos;) &#123;</span><br><span class="line">    throw new Error(&apos;Expected the reducer to be a function.&apos;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  let currentReducer = reducer</span><br><span class="line">  let currentState = preloadedState</span><br><span class="line">  let currentListeners = []</span><br><span class="line">  let nextListeners = currentListeners</span><br><span class="line">  let isDispatching = false</span><br><span class="line"></span><br><span class="line">  function ensureCanMutateNextListeners() &#123;</span><br><span class="line">    if (nextListeners === currentListeners) &#123;</span><br><span class="line">      nextListeners = currentListeners.slice()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * Reads the state tree managed by the store.</span><br><span class="line">   *</span><br><span class="line">   * @returns &#123;any&#125; The current state tree of your application.</span><br><span class="line">   */</span><br><span class="line">  function getState() &#123;</span><br><span class="line">    if (isDispatching) &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;You may not call store.getState() while the reducer is executing. &apos; +</span><br><span class="line">          &apos;The reducer has already received the state as an argument. &apos; +</span><br><span class="line">          &apos;Pass it down from the top reducer instead of reading it from the store.&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return currentState</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * Adds a change listener. It will be called any time an action is dispatched,</span><br><span class="line">   * and some part of the state tree may potentially have changed. You may then</span><br><span class="line">   * call `getState()` to read the current state tree inside the callback.</span><br><span class="line">   *</span><br><span class="line">   * You may call `dispatch()` from a change listener, with the following</span><br><span class="line">   * caveats:</span><br><span class="line">   *</span><br><span class="line">   * 1. The subscriptions are snapshotted just before every `dispatch()` call.</span><br><span class="line">   * If you subscribe or unsubscribe while the listeners are being invoked, this</span><br><span class="line">   * will not have any effect on the `dispatch()` that is currently in progress.</span><br><span class="line">   * However, the next `dispatch()` call, whether nested or not, will use a more</span><br><span class="line">   * recent snapshot of the subscription list.</span><br><span class="line">   *</span><br><span class="line">   * 2. The listener should not expect to see all state changes, as the state</span><br><span class="line">   * might have been updated multiple times during a nested `dispatch()` before</span><br><span class="line">   * the listener is called. It is, however, guaranteed that all subscribers</span><br><span class="line">   * registered before the `dispatch()` started will be called with the latest</span><br><span class="line">   * state by the time it exits.</span><br><span class="line">   *</span><br><span class="line">   * @param &#123;Function&#125; listener A callback to be invoked on every dispatch.</span><br><span class="line">   * @returns &#123;Function&#125; A function to remove this change listener.</span><br><span class="line">   */</span><br><span class="line">  function subscribe(listener) &#123;</span><br><span class="line">    if (typeof listener !== &apos;function&apos;) &#123;</span><br><span class="line">      throw new Error(&apos;Expected the listener to be a function.&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (isDispatching) &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;You may not call store.subscribe() while the reducer is executing. &apos; +</span><br><span class="line">          &apos;If you would like to be notified after the store has been updated, subscribe from a &apos; +</span><br><span class="line">          &apos;component and invoke store.getState() in the callback to access the latest state. &apos; +</span><br><span class="line">          &apos;See https://redux.js.org/api-reference/store#subscribe(listener) for more details.&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    let isSubscribed = true</span><br><span class="line"></span><br><span class="line">    ensureCanMutateNextListeners()</span><br><span class="line">    nextListeners.push(listener)</span><br><span class="line"></span><br><span class="line">    return function unsubscribe() &#123;</span><br><span class="line">      if (!isSubscribed) &#123;</span><br><span class="line">        return</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      if (isDispatching) &#123;</span><br><span class="line">        throw new Error(</span><br><span class="line">          &apos;You may not unsubscribe from a store listener while the reducer is executing. &apos; +</span><br><span class="line">            &apos;See https://redux.js.org/api-reference/store#subscribe(listener) for more details.&apos;</span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      isSubscribed = false</span><br><span class="line"></span><br><span class="line">      ensureCanMutateNextListeners()</span><br><span class="line">      const index = nextListeners.indexOf(listener)</span><br><span class="line">      nextListeners.splice(index, 1)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * Dispatches an action. It is the only way to trigger a state change.</span><br><span class="line">   *</span><br><span class="line">   * The `reducer` function, used to create the store, will be called with the</span><br><span class="line">   * current state tree and the given `action`. Its return value will</span><br><span class="line">   * be considered the **next** state of the tree, and the change listeners</span><br><span class="line">   * will be notified.</span><br><span class="line">   *</span><br><span class="line">   * The base implementation only supports plain object actions. If you want to</span><br><span class="line">   * dispatch a Promise, an Observable, a thunk, or something else, you need to</span><br><span class="line">   * wrap your store creating function into the corresponding middleware. For</span><br><span class="line">   * example, see the documentation for the `redux-thunk` package. Even the</span><br><span class="line">   * middleware will eventually dispatch plain object actions using this method.</span><br><span class="line">   *</span><br><span class="line">   * @param &#123;Object&#125; action A plain object representing “what changed”. It is</span><br><span class="line">   * a good idea to keep actions serializable so you can record and replay user</span><br><span class="line">   * sessions, or use the time travelling `redux-devtools`. An action must have</span><br><span class="line">   * a `type` property which may not be `undefined`. It is a good idea to use</span><br><span class="line">   * string constants for action types.</span><br><span class="line">   *</span><br><span class="line">   * @returns &#123;Object&#125; For convenience, the same action object you dispatched.</span><br><span class="line">   *</span><br><span class="line">   * Note that, if you use a custom middleware, it may wrap `dispatch()` to</span><br><span class="line">   * return something else (for example, a Promise you can await).</span><br><span class="line">   */</span><br><span class="line">  function dispatch(action) &#123;</span><br><span class="line">    if (!isPlainObject(action)) &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;Actions must be plain objects. &apos; +</span><br><span class="line">          &apos;Use custom middleware for async actions.&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (typeof action.type === &apos;undefined&apos;) &#123;</span><br><span class="line">      throw new Error(</span><br><span class="line">        &apos;Actions may not have an undefined &quot;type&quot; property. &apos; +</span><br><span class="line">          &apos;Have you misspelled a constant?&apos;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (isDispatching) &#123;</span><br><span class="line">      throw new Error(&apos;Reducers may not dispatch actions.&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">      isDispatching = true</span><br><span class="line">      currentState = currentReducer(currentState, action)</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">      isDispatching = false</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    const listeners = (currentListeners = nextListeners)</span><br><span class="line">    for (let i = 0; i &lt; listeners.length; i++) &#123;</span><br><span class="line">      const listener = listeners[i]</span><br><span class="line">      listener()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return action</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * Replaces the reducer currently used by the store to calculate the state.</span><br><span class="line">   *</span><br><span class="line">   * You might need this if your app implements code splitting and you want to</span><br><span class="line">   * load some of the reducers dynamically. You might also need this if you</span><br><span class="line">   * implement a hot reloading mechanism for Redux.</span><br><span class="line">   *</span><br><span class="line">   * @param &#123;Function&#125; nextReducer The reducer for the store to use instead.</span><br><span class="line">   * @returns &#123;void&#125;</span><br><span class="line">   */</span><br><span class="line">  function replaceReducer(nextReducer) &#123;</span><br><span class="line">    if (typeof nextReducer !== &apos;function&apos;) &#123;</span><br><span class="line">      throw new Error(&apos;Expected the nextReducer to be a function.&apos;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    currentReducer = nextReducer</span><br><span class="line">    dispatch(&#123; type: ActionTypes.REPLACE &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * Interoperability point for observable/reactive libraries.</span><br><span class="line">   * @returns &#123;observable&#125; A minimal observable of state changes.</span><br><span class="line">   * For more information, see the observable proposal:</span><br><span class="line">   * https://github.com/tc39/proposal-observable</span><br><span class="line">   */</span><br><span class="line">  function observable() &#123;</span><br><span class="line">    const outerSubscribe = subscribe</span><br><span class="line">    return &#123;</span><br><span class="line">      /**</span><br><span class="line">       * The minimal observable subscription method.</span><br><span class="line">       * @param &#123;Object&#125; observer Any object that can be used as an observer.</span><br><span class="line">       * The observer object should have a `next` method.</span><br><span class="line">       * @returns &#123;subscription&#125; An object with an `unsubscribe` method that can</span><br><span class="line">       * be used to unsubscribe the observable from the store, and prevent further</span><br><span class="line">       * emission of values from the observable.</span><br><span class="line">       */</span><br><span class="line">      subscribe(observer) &#123;</span><br><span class="line">        if (typeof observer !== &apos;object&apos; || observer === null) &#123;</span><br><span class="line">          throw new TypeError(&apos;Expected the observer to be an object.&apos;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        function observeState() &#123;</span><br><span class="line">          if (observer.next) &#123;</span><br><span class="line">            observer.next(getState())</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        observeState()</span><br><span class="line">        const unsubscribe = outerSubscribe(observeState)</span><br><span class="line">        return &#123; unsubscribe &#125;</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      [$$observable]() &#123;</span><br><span class="line">        return this</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // When a store is created, an &quot;INIT&quot; action is dispatched so that every</span><br><span class="line">  // reducer returns their initial state. This effectively populates</span><br><span class="line">  // the initial state tree.</span><br><span class="line">  dispatch(&#123; type: ActionTypes.INIT &#125;)</span><br><span class="line"></span><br><span class="line">  return &#123;</span><br><span class="line">    dispatch,</span><br><span class="line">    subscribe,</span><br><span class="line">    getState,</span><br><span class="line">    replaceReducer,</span><br><span class="line">    [$$observable]: observable</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/06/27/tableCellHeight/">
+        <span class="nav-arrow">← </span>
+        
+          Table格子高度被其他格子撑大的留白
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#createStore"><span class="toc-nav-text">createStore</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://wonderjar.me/2018/07/10/reduxSourceCode/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "yanm1ng";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "redux源码理解",
+        owner: "yanm1ng",
+        repo: "yanm1ng.github.io",
+        oauth: {
+          client_id: "0f87e490e00ee3fd87ef",
+          client_secret: "4a9d2b148e7971c2201ad12131ce8bf8159ccd2e"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
