@@ -148,11 +148,12 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><p>（不断补充）</p>
-<p>##基本技术<br>bundle<br>gzip</p>
+<p>##基本技术<br>bundle</p>
+<p>gzip<br>放一段代码免得再去找，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">new CompressionPlugin(&#123;</span><br><span class="line">  asset: &quot;[path].gz[query]&quot;,</span><br><span class="line">  algorithm: &quot;gzip&quot;,</span><br><span class="line">  test: /\.js$|\.css$|\.html$/,</span><br><span class="line">  threshold: 10240,</span><br><span class="line">  minRatio: 0.8</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>##图片</p>
-<p>##框架</p>
+<p>##框架<br>延迟加载<br>vue,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; path: &apos;:ticketId/log&apos;, name: &apos;ticket_log&apos;,</span><br><span class="line">  component: resolve =&gt; require([&apos;@/views/ticket/log&apos;], resolve),</span><br><span class="line">  meta: &#123; label: &apos;工单日志&apos;, auth: true &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
 <p>##CDN</p>
-<p>##体验<br>skeleton screen<br>延迟加载</p>
+<p>##体验<br>skeleton screen</p>
 </section>
     <!-- Tags START -->
     
