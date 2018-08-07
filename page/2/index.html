@@ -200,12 +200,7 @@
       <div class="article-summary">
         
           因为部署前端项目经常需要配nginx，这里备份一份配置，方便查询
-events {    worker_connections 1024;}
-http {
-include mime.types;
-default_type application/octet-stream;
-
-server { ...
+基本配置12345678910111213141516171819202122232425events &#123;    worker_connections 1024;&#125;http &#123;    includ ...
         
       </div>
       <a class="more" href="/2018/04/18/nginxSetup/">Read more</a>
