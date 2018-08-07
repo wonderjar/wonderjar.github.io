@@ -147,8 +147,19 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"></section>
+    <section class="markdown-content"><h3 id="import与export"><a href="#import与export" class="headerlink" title="import与export"></a>import与export</h3><p>import的方式要与export的方式对应起来，像这个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const A = &#123;&#125;</span><br><span class="line">const B = &#123;&#125;</span><br><span class="line"></span><br><span class="line">export const C = &#123;&#125;</span><br><span class="line"></span><br><span class="line">export &#123;</span><br><span class="line">    A, B</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    D: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//---------------</span><br><span class="line"></span><br><span class="line">import &#123; A, B, C &#125; from &apos;./m&apos;</span><br><span class="line">import M from &apos;./m&apos;</span><br><span class="line"></span><br><span class="line">console.log(A, B, C, M)  //&#123;&#125; &#123;&#125; &#123;&#125; &#123;D: &#123;&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>export default后边也可以接一个赋值语句，这种写法也可以，好像没什么用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let E</span><br><span class="line">export default E = &#123;a: 1&#125;</span><br><span class="line">console.log(E) //&#123;a:1&#125;</span><br></pre></td></tr></table></figure></p>
+</section>
     <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
@@ -191,7 +202,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#import与export"><span class="toc-nav-text">import与export</span></a></li></ol>
     
   </div>
 </aside>
