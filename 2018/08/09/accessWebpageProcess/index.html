@@ -10,7 +10,7 @@
   
   <title>
     
-      Python直接使用Redis作为Broker的例子 | Wonderjar&#39;s Blog
+      打开一个网页，到底发生了什么 | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Python直接使用Redis作为Broker的例子</h2>
-  <p class="post-date">2018-07-31</p>
+  <h2>打开一个网页，到底发生了什么</h2>
+  <p class="post-date">2018-08-09</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,11 +147,37 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>记录一下</p>
-<h3 id="Docker安装redis"><a href="#Docker安装redis" class="headerlink" title="Docker安装redis"></a>Docker安装redis</h3><p>mapping port,<br>docker run -p 6379:6379 –name some-redis -d redis</p>
-<h3 id="Python-code"><a href="#Python-code" class="headerlink" title="Python code"></a>Python code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">r = redis.StrictRedis(...)</span><br><span class="line">p = r.pubsub()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_handler</span><span class="params">(message)</span>:</span></span><br><span class="line">  <span class="keyword">print</span> <span class="string">'MY HANDLER: '</span>, message[<span class="string">'data'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># subscribe</span></span><br><span class="line">p.subscribe(<span class="string">'my-first-channel'</span>, <span class="string">'my-second-channel'</span>, ...)</span><br><span class="line">p.psubscribe(<span class="string">'my-*'</span>, ...)</span><br><span class="line">p.subscribe(**&#123;<span class="string">'my-channel'</span>: my_handler&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># publish</span></span><br><span class="line">r.publish(<span class="string">'my-channel'</span>, <span class="string">'hello python'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要自己处理event loop</span></span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">  message = p.get_message()</span><br><span class="line">  <span class="keyword">if</span> message:</span><br><span class="line">  <span class="comment"># do something with the message</span></span><br><span class="line">  time.sleep(<span class="number">0.001</span>)  <span class="comment"># be nice to the system :)</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># 另一种办法启动event loop，这种方法必须所有subscribe都要注册handler</span></span><br><span class="line">p.subscribe(**&#123;<span class="string">'my-channel'</span>: my_handler&#125;)</span><br><span class="line">thread = p.run_in_thread(sleep_time=<span class="number">0.001</span>)</span><br><span class="line"><span class="comment"># the event loop is now running in the background processing messages</span></span><br><span class="line"><span class="comment"># when it's time to shut it down...</span></span><br><span class="line">thread.stop()</span><br></pre></td></tr></table></figure>
+    <section class="markdown-content"><ol>
+<li>request<br>DNS<br>/etc/hosts相当于一个小的DNS，优先查找<br>其次去网上的DNS，通常连接一个wifi，会定DNS<br>得到一个公网IP</li>
+</ol>
+<p>CDN<br>如果有CDN存在，会得到一个更优的IP</p>
+<p>发起HTTP request<br>HTTP基于TCP协议<br>建立TCP连接需进行三次握手，主要是确认对方能收到自己的消息并给出应答<br>所谓TCP连接其实在网络链路是没有记录的，只是各个设备在本地维持一个状态，知道自己有一个连接，给它分配资源，因为要分配资源，所以连接数有限<br>在TCP连接之上，HTTP定义请求和返回是什么样子的<br>请求方法<br>（CRUD, OPTIONS跨域预检，HEAD处理缓存，TRACE测试诊断，CONNECT）<br>请求其实就是很多行，请求方法路径是第一行，header是第二段（多行）,空行，数据（多行）<br>response是 状态码（一行），header(多行)，空行，数据（多行）</p>
+<p>解析HTML<br>Firefox使用Geoko——Mozilla自主研发的渲染引擎，Safari和Chrome都使用webkit<br>解析html以构建dom树 -&gt; 构建render树 -&gt; 布局render树 -&gt; 绘制render树<br>dom树的节点可以是标签，也可以是标签中的文本<br>dom树按照顺序渲染<br>css tree<br>cssRule</p>
+<ul>
+<li>Selectors<ul>
+<li>p</li>
+<li>div</li>
+</ul>
+</li>
+<li>Declaration<ul>
+<li>Margin-top</li>
+<li>3px<br>解析到一个script标签时立即解析执行脚本，并阻塞文档的解析直到脚本执行完。<br>如果脚本是外引的，则网络必须先请求到这个资源——这个过程也是同步的，会阻塞文档的解析直到资源被请求到。<br>这个模式保持了很多年，并且在html4及html5中都特别指定了。<br>开发者可以将脚本标识为defer，以使其不阻塞文档解析，并在文档解析结束后执行。<br>Html5增加了标记脚本为异步的选项，以使脚本的解析执行使用另一个线程。</li>
+</ul>
+</li>
+</ul>
+<p>渲染对象和Dom元素相对应，但这种对应关系不是一对一的，不可见的Dom元素不会被插入渲染树，例如head元素。<br>另外，display属性为none的元素也不会在渲染树中出现（visibility属性为hidden的元素将出现在渲染树中）。</p>
+<p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=zh-CN" target="_blank" rel="noopener">https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=zh-CN</a></p>
 </section>
     <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Frontend" >
+    <span class="tag-code">Frontend</span>
+  </a>
+
+      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
@@ -159,17 +185,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/07/26/tornado4GenCoroutine/">
+      <a class="nav-left" href="/2018/07/31/pythonRedisBroker/">
         <span class="nav-arrow">← </span>
         
-          tornado4中@gen.coroutine
+          Python直接使用Redis作为Broker的例子
         
       </a>
     
     
-      <a class="nav-right" href="/2018/08/09/accessWebpageProcess/">
+      <a class="nav-right" href="/2018/08/12/wechatThreejs/">
         
-          打开一个网页，到底发生了什么
+          微信小游戏使用Three.js踩坑
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -194,7 +220,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Docker安装redis"><span class="toc-nav-text">Docker安装redis</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Python-code"><span class="toc-nav-text">Python code</span></a></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -204,7 +230,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2018/07/31/pythonRedisBroker/';
+    var url = 'http://wonderjar.me/2018/08/09/accessWebpageProcess/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -260,7 +286,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Python直接使用Redis作为Broker的例子",
+        id: "打开一个网页，到底发生了什么",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
