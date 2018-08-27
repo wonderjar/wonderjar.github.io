@@ -10,7 +10,7 @@
   
   <title>
     
-      mongooseIssues | Wonderjar&#39;s Blog
+      Mongoose连接Mongo repilcaSet | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,7 +138,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>mongooseIssues</h2>
+  <h2>Mongoose连接Mongo repilcaSet</h2>
   <p class="post-date">2018-08-24</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -147,9 +147,18 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>mongoose连接mongo repilcaSet<br>mogoose.connect(mongodb://XXX:XXX@HOST1:PORT1,HOST2:PORT2/XXX?replicaSet=XXXX, { useNewUrlParser: true })<br>报错Auth failed<br>解决办法，加上authSource</p>
+    <section class="markdown-content"><p>mongoose连接mongo repilcaSet<br>mogoose.connect(mongodb://XXX:XXX@HOST1:PORT1,HOST2:PORT2/XXX?replicaSet=XXXX, { useNewUrlParser: true })<br>报错Auth failed<br>解决办法，加上authSource，值可能是admin<br>mongodb://XXX:XXX@HOST1:PORT1,HOST2:PORT2/XXX?replicaSet=XXXX&amp;authSource=XXX</p>
 </section>
     <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      </div>
     
     <!-- Tags END -->
     <!-- NAV START -->
@@ -258,7 +267,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "mongooseIssues",
+        id: "Mongoose连接Mongo repilcaSet",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
