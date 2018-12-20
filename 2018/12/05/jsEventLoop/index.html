@@ -10,7 +10,7 @@
   
   <title>
     
-      各种数据库docker初始化，其他命令记录 | Wonderjar&#39;s Blog
+      Javascript EventLoop | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>各种数据库docker初始化，其他命令记录</h2>
-  <p class="post-date">2018-09-17</p>
+  <h2>Javascript EventLoop</h2>
+  <p class="post-date">2018-12-05</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,21 +147,34 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Mongo"><a href="#Mongo" class="headerlink" title="Mongo"></a>Mongo</h1><p>docker run -p 28918:27017 -d –name some-mongo -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo</p>
-<h1 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h1><p>mysql -h HOST -u USERNAME -p<br>show databases;<br>use DBNAME;<br>show tables;</p>
-<p>mysqldump -u username -p dbname &gt; dbexport.sql</p>
-<p>mysql -u username -p dbname &lt; dbexport.sql</p>
-<p>docker run –name some-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql</p>
-<h1 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h1><p>查看当前连接</p>
-<p>SELECT * FROM pg_stat_activity;</p>
-</section>
+    <section class="markdown-content"><h2 id="macrotask与microtask"><a href="#macrotask与microtask" class="headerlink" title="macrotask与microtask"></a>macrotask与microtask</h2><p>macrotask和microtask在event loop中的执行有明确差别</p>
+<p>常见的一个问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'script start'</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>);</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'script end'</span>);</span><br></pre></td></tr></table></figure>
+<p>microtask 微任务例如：</p>
+<p>process.nextTick</p>
+<p>Promise callback</p>
+<p>Object.observe</p>
+<p>macrotask,宏任务，例如：</p>
+<p>setTimeout</p>
+<p>setInterval</p>
+<p>setImmediate</p>
+<p>requestAnimationFrame</p>
+<p>I/O</p>
+<p>UI rendering</p>
+<p>先说一个不深究就可以理解的结论，一次event loop会从microtask queue源源不断取任务执行直到microtask queue空（包括microtask执行中产生的新的microtask）,一次event loop只从macrotask queue取一个任务执行，如果macrotask queue有多个任务，要依靠多次event loop才能执行完</p>
+<p>再说一点，就要小心了，如果microtask执行时间过长，其实就把一次event loop的时间拖长了，相当于阻塞了event loop</p>
+<h3 id="Event-Loop整体图"><a href="#Event-Loop整体图" class="headerlink" title="Event Loop整体图"></a>Event Loop整体图</h3><h3 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h3></section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#Database" >
-    <span class="tag-code">Database</span>
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+  <a href="/tags#Design" >
+    <span class="tag-code">Design</span>
   </a>
 
       </div>
@@ -172,17 +185,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/09/10/pythonEnv/">
+      <a class="nav-left" href="/2018/10/09/reactNativePractice/">
         <span class="nav-arrow">← </span>
         
-          在Python2.6机器上创建Python2.7 virtualenv
+          React Native踩坑记录
         
       </a>
     
     
-      <a class="nav-right" href="/2018/10/09/reactNativePractice/">
+      <a class="nav-right" href="/2018/12/20/echartTricks/">
         
-          React Native踩坑记录
+          Echart技巧
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -207,7 +220,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Mongo"><span class="toc-nav-text">Mongo</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#MySql"><span class="toc-nav-text">MySql</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#PostgreSQL"><span class="toc-nav-text">PostgreSQL</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#macrotask与microtask"><span class="toc-nav-text">macrotask与microtask</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Event-Loop整体图"><span class="toc-nav-text">Event Loop整体图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#requestAnimationFrame"><span class="toc-nav-text">requestAnimationFrame</span></a></li></ol></li></ol>
     
   </div>
 </aside>
@@ -217,7 +230,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2018/09/17/mongoInit/';
+    var url = 'http://wonderjar.me/2018/12/05/jsEventLoop/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -273,7 +286,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "各种数据库docker初始化，其他命令记录",
+        id: "Javascript EventLoop",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {

@@ -10,7 +10,7 @@
   
   <title>
     
-      各种数据库docker初始化，其他命令记录 | Wonderjar&#39;s Blog
+      Echart技巧 | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>各种数据库docker初始化，其他命令记录</h2>
-  <p class="post-date">2018-09-17</p>
+  <h2>Echart技巧</h2>
+  <p class="post-date">2018-12-20</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,21 +147,17 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Mongo"><a href="#Mongo" class="headerlink" title="Mongo"></a>Mongo</h1><p>docker run -p 28918:27017 -d –name some-mongo -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo</p>
-<h1 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h1><p>mysql -h HOST -u USERNAME -p<br>show databases;<br>use DBNAME;<br>show tables;</p>
-<p>mysqldump -u username -p dbname &gt; dbexport.sql</p>
-<p>mysql -u username -p dbname &lt; dbexport.sql</p>
-<p>docker run –name some-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql</p>
-<h1 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h1><p>查看当前连接</p>
-<p>SELECT * FROM pg_stat_activity;</p>
+    <section class="markdown-content"><h2 id="双y轴对齐"><a href="#双y轴对齐" class="headerlink" title="双y轴对齐"></a>双y轴对齐</h2><p>splitNumber这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。<br>所以就算两个y轴的splitNumber相等也可能分段不一致。</p>
+<p>后来我发现第一个y轴的splitNumber总是没有问题，所以动态计算第二个y轴的interval</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示最大值为20的倍数，总是分为四段</span></span><br><span class="line"></span><br><span class="line">maxVal = <span class="built_in">Math</span>.max(...values)</span><br><span class="line">axisMaxVal = <span class="built_in">Math</span>.floor(maxVal / <span class="number">20</span> + <span class="number">1</span>) * <span class="number">20</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  yAxis:[</span><br><span class="line">    &#123;...&#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      min: <span class="number">0</span>,</span><br><span class="line">      max: axisMaxVal,</span><br><span class="line">      interval: axisMaxVal / <span class="number">5</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#Database" >
-    <span class="tag-code">Database</span>
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
   </a>
 
       </div>
@@ -172,20 +168,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/09/10/pythonEnv/">
+      <a class="nav-left" href="/2018/12/05/jsEventLoop/">
         <span class="nav-arrow">← </span>
         
-          在Python2.6机器上创建Python2.7 virtualenv
+          Javascript EventLoop
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/10/09/reactNativePractice/">
-        
-          React Native踩坑记录
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -207,7 +196,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Mongo"><span class="toc-nav-text">Mongo</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#MySql"><span class="toc-nav-text">MySql</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#PostgreSQL"><span class="toc-nav-text">PostgreSQL</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#双y轴对齐"><span class="toc-nav-text">双y轴对齐</span></a></li></ol>
     
   </div>
 </aside>
@@ -217,7 +206,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2018/09/17/mongoInit/';
+    var url = 'http://wonderjar.me/2018/12/20/echartTricks/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -273,7 +262,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "各种数据库docker初始化，其他命令记录",
+        id: "Echart技巧",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
