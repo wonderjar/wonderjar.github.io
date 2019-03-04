@@ -152,7 +152,19 @@
 <p>mysqldump -u username -p dbname &gt; dbexport.sql</p>
 <p>mysql -u username -p dbname &lt; dbexport.sql</p>
 <p>docker run –name some-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql</p>
-<h1 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h1><p>查看当前连接</p>
+<h1 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h1><p>docker run –name some-postgres -e POSTGRES_USER=exampleuser -e POSTGRES_PASSWORD=exampleuser -d postgres</p>
+<p>如果不用docker安装，</p>
+<p>sudo su postgres psql</p>
+<p>认证失败，</p>
+<p>sudo find / -type f -name pg_hba.conf 2&gt; /dev/null</p>
+<p>Add a new line to the top of pg_hba.conf:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local    postgres     postgres     peer</span><br></pre></td></tr></table></figure></p>
+<p>/Library/PostgreSQL/9.6/pg_ctl -D /Library/PostgreSQL/9.6/data stop</p>
+<p>/Library/PostgreSQL/9.6/pg_ctl -D /Library/PostgreSQL/9.6/data start</p>
+<p>查看DB<br>\l<br>选择DB<br>\c DB1</p>
+<p>createdb -E utf8 -T template0 –lc-collate=en_US.UTF-8 –lc-ctype=en_US.UTF-8 exampledb<br>CREATE USER exampleuser WITH PASSWORD ‘examplepassword’;<br>ALTER DATABASE exampledb OWNER TO exampleuser;<br>ALTER SCHEMA public OWNER TO exampleuser;</p>
+<p>查看当前 -D</p>
+<p>ps aux | grep postgres | grep – -D</p>
+<p>查看当前连接</p>
 <p>SELECT * FROM pg_stat_activity;</p>
 </section>
     <!-- Tags START -->
@@ -303,7 +315,7 @@
 </div>
     <footer class="app-footer">
   <p class="copyright">
-    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
     <br>
     Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
   </p>

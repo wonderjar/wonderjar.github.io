@@ -10,7 +10,7 @@
   
   <title>
     
-      竖直居中 | Wonderjar&#39;s Blog
+      python2.7日期操作 | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>竖直居中</h2>
-  <p class="post-date">2018-04-27</p>
+  <h2>python2.7日期操作</h2>
+  <p class="post-date">2019-03-04</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,15 +147,19 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>lineheight<br>absolute + 负margin<br>absolute + margin auto<br>absolute + calc<br>absolute + transform<br>table<br>css-table<br>writing-mode<br>flex<br>grid</p>
-</section>
+    <section class="markdown-content"><p>python2.7里的日期处理</p>
+<h3 id="string-gt-datetime"><a href="#string-gt-datetime" class="headerlink" title="string &gt; datetime"></a>string &gt; datetime</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="datetime-gt-string"><a href="#datetime-gt-string" class="headerlink" title="datetime &gt; string"></a>datetime &gt; string</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line">datetime.datetime.strptime(str_val, &quot;%Y-%m-%d %H:%M:%S&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="将无时区时间转为有时区，例子"><a href="#将无时区时间转为有时区，例子" class="headerlink" title="将无时区时间转为有时区，例子"></a>将无时区时间转为有时区，例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line">import pytz</span><br><span class="line">dt = datetime.datetime.strptime(dt, &apos;%Y-%m-%d %H:%M:%S&apos;)</span><br><span class="line">dt = (dt - datetime.timedelta(hours=8)).replace(tzinfo=pytz.timezone(&apos;UTC&apos;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 虽然这样可以指定特定地区，但没有Asia/Beijing，而Asia/Shanghai与UTC时间相差其实是+8:06:00 </span><br><span class="line">import pytz</span><br><span class="line">from datetime import datetime</span><br><span class="line">now = datetime.now()</span><br><span class="line">now = now.replace(tzinfo=pytz.timezone(&apos;Asia/Shanghai&apos;))</span><br></pre></td></tr></table></figure>
+<h3 id="清除时分秒"><a href="#清除时分秒" class="headerlink" title="清除时分秒"></a>清除时分秒</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import datetime</span><br><span class="line">datetime.datetime.now().replace(hour=0,minute=0,second=0,microsecond=0)</span><br></pre></td></tr></table></figure></section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#CSS" >
-    <span class="tag-code">CSS</span>
+  <a href="/tags#Python" >
+    <span class="tag-code">Python</span>
   </a>
 
       </div>
@@ -166,20 +170,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/04/25/singleThreadAndWorker/">
+      <a class="nav-left" href="/2018/12/20/echartTricks/">
         <span class="nav-arrow">← </span>
         
-          从单线程，事件循环聊到Web Worker
+          Echart技巧
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/05/14/frontendSpeedUp/">
-        
-          前端加载优化
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -201,7 +198,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#string-gt-datetime"><span class="toc-nav-text">string &gt; datetime</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#datetime-gt-string"><span class="toc-nav-text">datetime &gt; string</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#将无时区时间转为有时区，例子"><span class="toc-nav-text">将无时区时间转为有时区，例子</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#清除时分秒"><span class="toc-nav-text">清除时分秒</span></a></li></ol>
     
   </div>
 </aside>
@@ -211,7 +208,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2018/04/27/verticallyAssign/';
+    var url = 'http://wonderjar.me/2019/03/04/pythonDatetimeParse/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -267,7 +264,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "竖直居中",
+        id: "python2.7日期操作",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
