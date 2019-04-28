@@ -141,42 +141,39 @@
   
     <article class="article-card">
       <h2 class="article-head">
-        <a href="/2019/03/27/dockerCmd/">dockerCmd</a>
+        <a href="/2018/04/08/webpackMutiModules/">webpack多入口文件打包</a>
       </h2>
-      <p class="article-date">March 27, 2019</p>
+      <p class="article-date">April 8, 2018</p>
       
-      <div class="article-summary">
         
-          sudo docker exec -it XXXX /bin/bash
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
 
-        
-      </div>
-      <a class="more" href="/2019/03/27/dockerCmd/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2019/03/25/reactFiber/"></a>
-      </h2>
-      <p class="article-date">March 25, 2019</p>
+  <a href="/tags#Webpack" >
+    <span class="tag-code">Webpack</span>
+  </a>
+
       
       <div class="article-summary">
         
-          
-title: reactFiberdate: 2019-03-25 16:48:53tags: React
-categories: ReactGoals,pause work and come back to it later.assign priority to different ty ...
+          #分业务模块打包 vs 多入口文件打包正如我标题所说，我觉得首先要说清楚这两个概念。分业务模块打包，是说在webpack的entry中， 定义多个来源1234entry: &#123;  main: &apos;./src/modules/login.js&apos;,  home: &ap ...
         
       </div>
-      <a class="more" href="/2019/03/25/reactFiber/">Read more</a>
+      <a class="more" href="/2018/04/08/webpackMutiModules/">Read more</a>
     </article>
   
     <article class="article-card">
       <h2 class="article-head">
-        <a href="/2019/03/25/marginNegative/">margin为负产生的影响</a>
+        <a href="/2018/03/29/zindex/">zindex堆叠问题</a>
       </h2>
-      <p class="article-date">March 25, 2019</p>
+      <p class="article-date">March 29, 2018</p>
       
         
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
   <a href="/tags#CSS" >
     <span class="tag-code">CSS</span>
   </a>
@@ -184,168 +181,44 @@ categories: ReactGoals,pause work and come back to it later.assign priority to d
       
       <div class="article-summary">
         
-          双飞燕布局https://codepen.io/anon/pen/LaazGm
-
+          ##不一定需要zindex首先zindex主要用于非static的position，static定位的一个个铺开也不需要调整层级。但对于这几类，也不是总需要zindex，我觉得有两点需要知道，1.非static定位的元素有一个隐式的层级，居于static定位元素之上2.html中后边的元素有 ...
         
       </div>
-      <a class="more" href="/2019/03/25/marginNegative/">Read more</a>
+      <a class="more" href="/2018/03/29/zindex/">Read more</a>
     </article>
   
     <article class="article-card">
       <h2 class="article-head">
-        <a href="/2019/03/25/reactSetState/">React SetState</a>
+        <a href="/2018/03/28/scrollChaining/">ScrollChaining链式滑动的解决办法</a>
       </h2>
-      <p class="article-date">March 25, 2019</p>
-      
-        
-  <a href="/tags#React" >
-    <span class="tag-code">React</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          1234// Inside React DOMconst inst = new YourComponent();inst.props = props;inst.updater = ReactDOMUpdater;
-12345// A bit simplifiedsetState(partia ...
-        
-      </div>
-      <a class="more" href="/2019/03/25/reactSetState/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2019/03/18/tmuxCommand/">tmuxCommand</a>
-      </h2>
-      <p class="article-date">March 18, 2019</p>
-      
-      <div class="article-summary">
-        
-          tmux lstmux new -s sessionNametmux attach -t sessionName
-CTRL + B then[  光标移动S  切换tmuxD  退出tmux，不销毁
-
-        
-      </div>
-      <a class="more" href="/2019/03/18/tmuxCommand/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2019/03/04/pythonDatetimeParse/">python2.7日期操作</a>
-      </h2>
-      <p class="article-date">March 4, 2019</p>
-      
-        
-  <a href="/tags#Python" >
-    <span class="tag-code">Python</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          python2.7里的日期处理
-string &gt; datetime1str.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)
-datetime &gt; string12import datetimedatetime.datetime.strptime(s ...
-        
-      </div>
-      <a class="more" href="/2019/03/04/pythonDatetimeParse/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/12/20/echartTricks/">Echart技巧</a>
-      </h2>
-      <p class="article-date">December 20, 2018</p>
+      <p class="article-date">March 28, 2018</p>
       
         
   <a href="/tags#Javascript" >
     <span class="tag-code">Javascript</span>
   </a>
 
-      
-      <div class="article-summary">
-        
-          双y轴对齐splitNumber这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。所以就算两个y轴的splitNumber相等也可能分段不一致。
-后来我发现第一个y轴的splitNumber总是没有问题，所以动态计算第二个y轴的interva ...
-        
-      </div>
-      <a class="more" href="/2018/12/20/echartTricks/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/12/05/jsEventLoop/">Javascript EventLoop</a>
-      </h2>
-      <p class="article-date">December 5, 2018</p>
-      
-        
-  <a href="/tags#Javascript" >
-    <span class="tag-code">Javascript</span>
-  </a>
-
-  <a href="/tags#Design" >
-    <span class="tag-code">Design</span>
+  <a href="/tags#CSS" >
+    <span class="tag-code">CSS</span>
   </a>
 
       
       <div class="article-summary">
         
-          macrotask与microtaskmacrotask和microtask在event loop中的执行有明确差别
-常见的一个问题
-12345678910111213console.log('script start');setTimeout(function() &#123;  cons ...
+          滑动传递滑动在移动端是非常常见的操作，当出现一个或者多个支持滚动的叠加层时，即使是滚动最上层，滚动也会作用到所有层级，比如这样1234&lt;div style="text-align: left;"&gt;    &lt;video controls="controls" src="/vi ...
         
       </div>
-      <a class="more" href="/2018/12/05/jsEventLoop/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/10/09/reactNativePractice/">React Native踩坑记录</a>
-      </h2>
-      <p class="article-date">October 9, 2018</p>
-      
-        
-  <a href="/tags#Javascript" >
-    <span class="tag-code">Javascript</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          按照官网的步骤都走不下去，后来模拟器出现红屏后来改了package.json里依赖的版本，保存一份1234567891011121314151617181920212223242526&#123;  &quot;name&quot;: &quot;reactNativeExample&quo ...
-        
-      </div>
-      <a class="more" href="/2018/10/09/reactNativePractice/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/09/17/mongoInit/">各种数据库docker初始化，其他命令记录</a>
-      </h2>
-      <p class="article-date">September 17, 2018</p>
-      
-        
-  <a href="/tags#Database" >
-    <span class="tag-code">Database</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          Mongodocker run -p 28918:27017 -d –name some-mongo -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo
-MySqlmysql -h HOST  ...
-        
-      </div>
-      <a class="more" href="/2018/09/17/mongoInit/">Read more</a>
+      <a class="more" href="/2018/03/28/scrollChaining/">Read more</a>
     </article>
   
 
   
     <div class="guide-pager">
   
-    <a class="unvisible" href="/"><span class="page-arrow">←</span> Prev</a>
+    <a href="/page/3/"><span class="page-arrow">← </span>Prev</a>
   
   
-    <a href="/page/2/">Next<span class="page-arrow"> →</span></a>
+    <a class="unvisible" href="/">Next <span class="page-arrow">→</span></a>
   
 </div>
   

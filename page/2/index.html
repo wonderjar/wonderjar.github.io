@@ -141,6 +141,110 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2018/09/10/pythonEnv/">在Python2.6机器上创建Python2.7 virtualenv</a>
+      </h2>
+      <p class="article-date">September 10, 2018</p>
+      
+        
+  <a href="/tags#Python" >
+    <span class="tag-code">Python</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          安装pipwget https://bootstrap.pypa.io/2.6/get-pip.pypython get-pip.py
+安装virtualenvsudo pip install virtualenv
+安装Python2.7wget http://www.python.org/ ...
+        
+      </div>
+      <a class="more" href="/2018/09/10/pythonEnv/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/08/28/pm2Issues/">pm2使用中的一些记录</a>
+      </h2>
+      <p class="article-date">August 28, 2018</p>
+      
+        
+  <a href="/tags#Server" >
+    <span class="tag-code">Server</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          PM2是一个nodejs进程管理工具，甚至可以实现负载均衡-i 0 或者 -i max， 会根据当前机器核数确定实例数目比如这样启动1pm2 start bin/www -i 0 --name &quot;XXX&quot; --max-memory-restart 400M -f
+常用12 ...
+        
+      </div>
+      <a class="more" href="/2018/08/28/pm2Issues/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/08/27/modifyRabbitMQConf/">修改RabbitMQ配置</a>
+      </h2>
+      <p class="article-date">August 27, 2018</p>
+      
+        
+  <a href="/tags#Server" >
+    <span class="tag-code">Server</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          看Rabbitmq配置的路径，可能是 /etc/rabbitmq如果没有rabbitmq.config，新建文件下面的例子就是修改了rabbitmq和rabbimq admin web ui的端口
+rabbitmq.config12345678910111213141516171819202 ...
+        
+      </div>
+      <a class="more" href="/2018/08/27/modifyRabbitMQConf/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/08/26/fontendUploadToOss/">前端直传文件到阿里OSS</a>
+      </h2>
+      <p class="article-date">August 26, 2018</p>
+      
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          将accessToken放在前端的方案不提，因为不安全后端签名提供一个这样的signedObj，然后前端就可以完成上传12345678910111213141516171819202122232425262728var signedObj = &#123;    OSSAccessKeyId ...
+        
+      </div>
+      <a class="more" href="/2018/08/26/fontendUploadToOss/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/08/24/mongooseIssues/">Mongoose连接Mongo repilcaSet</a>
+      </h2>
+      <p class="article-date">August 24, 2018</p>
+      
+        
+  <a href="/tags#Javascript" >
+    <span class="tag-code">Javascript</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          mongoose连接mongo repilcaSetmogoose.connect(mongodb://XXX:XXX@HOST1:PORT1,HOST2:PORT2/XXX?replicaSet=XXXX, { useNewUrlParser: true })报错Auth failed解决 ...
+        
+      </div>
+      <a class="more" href="/2018/08/24/mongooseIssues/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2018/08/12/wechatThreejs/">微信小游戏使用Three.js踩坑</a>
       </h2>
       <p class="article-date">August 12, 2018</p>
@@ -246,102 +350,6 @@ Function.prototype.toString123var fn = function(x) &#123;ret ...
         
       </div>
       <a class="more" href="/2018/07/12/jsToString/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/07/12/jsImport/">JS模块管理,Export,Import</a>
-      </h2>
-      <p class="article-date">July 12, 2018</p>
-      
-        
-  <a href="/tags#Javascript" >
-    <span class="tag-code">Javascript</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          import与exportimport的方式要与export的方式对应起来，像这个例子12345678910111213141516171819const A = &#123;&#125;const B = &#123;&#125;export const C = &#123;&#125;e ...
-        
-      </div>
-      <a class="more" href="/2018/07/12/jsImport/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/07/10/reduxSourceCode/">redux源码理解</a>
-      </h2>
-      <p class="article-date">July 10, 2018</p>
-      
-      <div class="article-summary">
-        
-          index.jsexport的所有东西，接下来逐一来看12345678export &#123;  createStore,  combineReducers,  bindActionCreators,  applyMiddleware,  compose,  __DO_NOT_USE__A ...
-        
-      </div>
-      <a class="more" href="/2018/07/10/reduxSourceCode/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/06/27/tableCellHeight/">Table格子高度被其他格子撑大的留白</a>
-      </h2>
-      <p class="article-date">June 27, 2018</p>
-      
-        
-  <a href="/tags#CSS" >
-    <span class="tag-code">CSS</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          Table格子高度被其他格子撑大后，上下产生留白，而且这种留白不是受padding的控制，就导致内容被竖直居中在中间就像这里，橙色撑不满黄色，如果确保让每个格子的内容都能撑满当前高度，有一个小技巧设置tr height 1px， 然后td height inherit就可以了，如图，示例代码 ...
-        
-      </div>
-      <a class="more" href="/2018/06/27/tableCellHeight/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/06/22/proxyPattern/">代理模式，中间件，Promise</a>
-      </h2>
-      <p class="article-date">June 22, 2018</p>
-      
-        
-  <a href="/tags#Design" >
-    <span class="tag-code">Design</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          在Java中，代理模式被提到的很多，通过Proxy.newProxyInstance就可以创建一个出instance的代理，在他做事的之前，之后，或者错误处理这些方方面面都可以进行扩展，通过动态代理，Spring又实现了AOP
-这里扩展说一下代理模式和装饰者模式的小小区别，Java中最有名的 ...
-        
-      </div>
-      <a class="more" href="/2018/06/22/proxyPattern/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/06/21/reactTypescriptPractice/">React Typescript踩坑记录</a>
-      </h2>
-      <p class="article-date">June 21, 2018</p>
-      
-        
-  <a href="/tags#Javascript" >
-    <span class="tag-code">Javascript</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          引入React使用import React from ‘react’;报错/node_modules/@types/react/index”‘ has no default export.解决办法import * as React from ‘react’;
-引入PropTypesimpor ...
-        
-      </div>
-      <a class="more" href="/2018/06/21/reactTypescriptPractice/">Read more</a>
     </article>
   
 
