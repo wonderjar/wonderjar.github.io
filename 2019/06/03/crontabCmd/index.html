@@ -10,7 +10,7 @@
   
   <title>
     
-      各种数据库docker初始化，其他命令记录 | Wonderjar&#39;s Blog
+      crontabCmd | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>各种数据库docker初始化，其他命令记录</h2>
-  <p class="post-date">2018-09-17</p>
+  <h2>crontabCmd</h2>
+  <p class="post-date">2019-06-03</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,36 +147,15 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><h1 id="Mongo"><a href="#Mongo" class="headerlink" title="Mongo"></a>Mongo</h1><p>docker run -p 28918:27017 -d –name some-mongo -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo</p>
-<h1 id="MySql"><a href="#MySql" class="headerlink" title="MySql"></a>MySql</h1><p>mysql -h HOST -u USERNAME -p<br>show databases;<br>use DBNAME;<br>show tables;</p>
-<p>mysqldump -u username -p dbname &gt; dbexport.sql</p>
-<p>mysql -u username -p dbname &lt; dbexport.sql</p>
-<p>docker run –name some-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql</p>
-<p>show processlist;<br>select <em> from information_schema.innodb_locks;<br>select </em> from information_schema.innodb_trx \G;</p>
-<h1 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL"></a>PostgreSQL</h1><p>docker run –name some-postgres -e POSTGRES_USER=exampleuser -e POSTGRES_PASSWORD=exampleuser -d postgres</p>
-<p>如果不用docker安装，</p>
-<p>sudo su postgres psql</p>
-<p>认证失败，</p>
-<p>sudo find / -type f -name pg_hba.conf 2&gt; /dev/null</p>
-<p>Add a new line to the top of pg_hba.conf:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local    postgres     postgres     peer</span><br></pre></td></tr></table></figure></p>
-<p>/Library/PostgreSQL/9.6/pg_ctl -D /Library/PostgreSQL/9.6/data stop</p>
-<p>/Library/PostgreSQL/9.6/pg_ctl -D /Library/PostgreSQL/9.6/data start</p>
-<p>查看DB<br>\l<br>选择DB<br>\c DB1</p>
-<p>createdb -E utf8 -T template0 –lc-collate=en_US.UTF-8 –lc-ctype=en_US.UTF-8 exampledb<br>CREATE USER exampleuser WITH PASSWORD ‘examplepassword’;<br>ALTER DATABASE exampledb OWNER TO exampleuser;<br>ALTER SCHEMA public OWNER TO exampleuser;</p>
-<p>查看当前 -D</p>
-<p>ps aux | grep postgres | grep – -D</p>
-<p>查看当前连接</p>
-<p>SELECT * FROM pg_stat_activity;</p>
-<p>重启<br>pg_ctl reload -D /var/lib/postgresql/9.4/main -c config_file=/etc/postgresql/9.4/main/postgresql.conf</p>
-<p>pg_dump TestDb1&gt;TestDb14.sql</p>
-</section>
+    <section class="markdown-content"><p>crontab -l<br>crontab -e</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">51 * * * * root run-parts /etc/cron.hourly</span><br><span class="line"></span><br><span class="line">24 7 * * * root run-parts /etc/cron.daily</span><br><span class="line"></span><br><span class="line">22 4 * * 0 root run-parts /etc/cron.weekly</span><br><span class="line"></span><br><span class="line">42 4 1 * * root run-parts /etc/cron.monthly</span><br></pre></td></tr></table></figure></section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#Database" >
-    <span class="tag-code">Database</span>
+  <a href="/tags#Server" >
+    <span class="tag-code">Server</span>
   </a>
 
       </div>
@@ -187,20 +166,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2018/09/10/pythonEnv/">
+      <a class="nav-left" href="/2019/05/05/manipulateDom/">
         <span class="nav-arrow">← </span>
         
-          在Python2.6机器上创建Python2.7 virtualenv
+          操作Dom
         
       </a>
     
-    
-      <a class="nav-right" href="/2018/10/09/reactNativePractice/">
-        
-          React Native踩坑记录
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -222,7 +194,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Mongo"><span class="toc-nav-text">Mongo</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#MySql"><span class="toc-nav-text">MySql</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#PostgreSQL"><span class="toc-nav-text">PostgreSQL</span></a></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -232,7 +204,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2018/09/17/mongoInit/';
+    var url = 'http://wonderjar.me/2019/06/03/crontabCmd/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -288,7 +260,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "各种数据库docker初始化，其他命令记录",
+        id: "crontabCmd",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {

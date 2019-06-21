@@ -141,6 +141,27 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2018/07/26/tornado4GenCoroutine/">tornado4中@gen.coroutine</a>
+      </h2>
+      <p class="article-date">July 26, 2018</p>
+      
+        
+  <a href="/tags#Python" >
+    <span class="tag-code">Python</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          在用python2.7,tornado4.5,想要把一些异步http请求封装成service给上层调用，查了好久资料，记下结论
+12345# controller层@gen.coroutine    def get(self):        result = xx_service.doSo ...
+        
+      </div>
+      <a class="more" href="/2018/07/26/tornado4GenCoroutine/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2018/07/12/jsToString/">JS toString方法详说</a>
       </h2>
       <p class="article-date">July 12, 2018</p>
@@ -317,31 +338,6 @@ gzip放一段代码免得再去找，1234567new CompressionPlugin(&#123;  asset:
         
       </div>
       <a class="more" href="/2018/04/27/verticallyAssign/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2018/04/25/singleThreadAndWorker/">从单线程，事件循环聊到Web Worker</a>
-      </h2>
-      <p class="article-date">April 25, 2018</p>
-      
-        
-  <a href="/tags#Javascript" >
-    <span class="tag-code">Javascript</span>
-  </a>
-
-  <a href="/tags#Design" >
-    <span class="tag-code">Design</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          Javascript为什么是单线程Javascript设计之初是为浏览器端服务的，比如操作dom，多线程很容易导致对dom的更新不一致，比如两个线程都在修改同一个dom节点，所以所有的浏览器规定Javascript只能有一个主线程
-单线程与Event Loop123456let end =  ...
-        
-      </div>
-      <a class="more" href="/2018/04/25/singleThreadAndWorker/">Read more</a>
     </article>
   
 
