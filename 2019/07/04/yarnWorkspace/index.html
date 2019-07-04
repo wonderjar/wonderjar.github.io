@@ -10,7 +10,7 @@
   
   <title>
     
-      crontabCmd | Wonderjar&#39;s Blog
+      Yarn Workspace | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>crontabCmd</h2>
-  <p class="post-date">2019-06-03</p>
+  <h2>Yarn Workspace</h2>
+  <p class="post-date">2019-07-04</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,15 +147,25 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>crontab -l<br>crontab -e</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">51 * * * * root run-parts /etc/cron.hourly</span><br><span class="line"></span><br><span class="line">24 7 * * * root run-parts /etc/cron.daily</span><br><span class="line"></span><br><span class="line">22 4 * * 0 root run-parts /etc/cron.weekly</span><br><span class="line"></span><br><span class="line">42 4 1 * * root run-parts /etc/cron.monthly</span><br></pre></td></tr></table></figure></section>
+    <section class="markdown-content"><p>Structure<br>Root</p>
+<ul>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ul>
+<p>Root package.json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;private&quot;: true,</span><br><span class="line">&quot;workspaces&quot;: [</span><br><span class="line">  &quot;A&quot;,</span><br><span class="line">  &quot;B&quot;,</span><br><span class="line">  &quot;C&quot;</span><br><span class="line">],</span><br></pre></td></tr></table></figure></p>
+<p>A package.json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;name&quot;: &quot;A&quot;,</span><br><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  &quot;cross-env&quot;: &quot;5.0.5&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>B package.json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;name&quot;: &quot;@XXX/B&quot;,</span><br><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  &quot;cross-env&quot;: &quot;5.0.5&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>C package.json<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  &quot;cross-env&quot;: &quot;5.0.5&quot;,</span><br><span class="line">  &quot;A&quot;:&quot;*&quot;,</span><br><span class="line">  &quot;@XXX/B&quot;: &quot;*&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>C<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import Foo from &apos;A/src/index.js&apos;</span><br><span class="line">import Bar from &apos;@XXX/B/src/index.js&apos;</span><br></pre></td></tr></table></figure></p>
+</section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tags#Server" >
-    <span class="tag-code">Server</span>
+  <a href="/tags#Frontend" >
+    <span class="tag-code">Frontend</span>
   </a>
 
       </div>
@@ -166,20 +176,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2019/05/05/manipulateDom/">
+      <a class="nav-left" href="/2019/06/03/crontabCmd/">
         <span class="nav-arrow">← </span>
         
-          操作Dom
+          crontabCmd
         
       </a>
     
-    
-      <a class="nav-right" href="/2019/07/04/yarnWorkspace/">
-        
-          Yarn Workspace
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -211,7 +214,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2019/06/03/crontabCmd/';
+    var url = 'http://wonderjar.me/2019/07/04/yarnWorkspace/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -267,7 +270,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "crontabCmd",
+        id: "Yarn Workspace",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
