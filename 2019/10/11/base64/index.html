@@ -10,7 +10,7 @@
   
   <title>
     
-      rabbitmqadmin CMD | Wonderjar&#39;s Blog
+      Base64 | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>rabbitmqadmin CMD</h2>
-  <p class="post-date">2019-07-17</p>
+  <h2>Base64</h2>
+  <p class="post-date">2019-10-11</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,9 +147,10 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>./rabbitmqadmin -u XXX -p XXX -V / list queues<br>./rabbitmqadmin -u XXX -p XXX -V / list bindings<br>./rabbitmqadmin -u XXX -p XXX -V / list exchanges</p>
-<p>./rabbitmqadmin -u XXX -p XXX declare exchange name=XXX type=topic<br>./rabbitmqadmin -u XXX -p XXX declare queue name=XXX durable=true<br>./rabbitmqadmin -u XXX -p XXX declare binding source=”XXX” destination_type=”queue” destination=”XXX” routing_key=”XXX”</p>
-<p>./rabbitmqadmin -u XXX -p XXX -V / get queue=XXX count=1<br>./rabbitmqadmin -u XXX -p XXX -V / get queue=XXX count=1 ackmode=ack_requeue_false<br>./rabbitmqadmin -u XXX -p XXX publish exchange=XXX routing_key=XXX payload=’{“test”:1}’</p>
+    <section class="markdown-content"><p>二进制到字符串的转换方法。Base64是一种最常见的二进制编码方法。</p>
+<p>由于标准的Base64编码后可能出现字符+和/，在URL中就不能直接作为参数，所以又有一种”url safe”的base64编码，其实就是把字符+和/分别变成-和_：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; base64.b64encode(b&apos;i\xb7\x1d\xfb\xef\xff&apos;)</span><br><span class="line">b&apos;abcd++//&apos;</span><br><span class="line">&gt;&gt;&gt; base64.urlsafe_b64encode(b&apos;i\xb7\x1d\xfb\xef\xff&apos;)</span><br><span class="line">b&apos;abcd--__&apos;</span><br><span class="line">&gt;&gt;&gt; base64.urlsafe_b64decode(&apos;abcd--__&apos;)</span><br><span class="line">b&apos;i\xb7\x1d\xfb\xef\xff&apos;</span><br></pre></td></tr></table></figure>
+<p>Reference <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017684507717184" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1017684507717184</a></p>
 </section>
     <!-- Tags START -->
     
@@ -168,20 +169,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2019/07/04/yarnWorkspace/">
+      <a class="nav-left" href="/2019/07/17/rabbitmqAdmin/">
         <span class="nav-arrow">← </span>
         
-          Yarn Workspace
+          rabbitmqadmin CMD
         
       </a>
     
-    
-      <a class="nav-right" href="/2019/10/11/base64/">
-        
-          Base64
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -213,7 +207,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2019/07/17/rabbitmqAdmin/';
+    var url = 'http://wonderjar.me/2019/10/11/base64/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -269,7 +263,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "rabbitmqadmin CMD",
+        id: "Base64",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
