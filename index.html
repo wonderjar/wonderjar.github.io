@@ -141,21 +141,46 @@
   
     <article class="article-card">
       <h2 class="article-head">
+        <a href="/2019/10/12/encryption/">加解密简单总结</a>
+      </h2>
+      <p class="article-date">October 12, 2019</p>
+      
+        
+  <a href="/tags#Common" >
+    <span class="tag-code">Common</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          Hash算法加密例如md5, sha等
+单向不可还原，利用多次取余，一个结果对应无穷多的原始值，只能做验证
+对称加密A与B之间之间的通讯数据都用同一套的密钥来进行加密解密
+非对称加密例如RSA等
+用公钥和私钥来加解密的算法。打个比方，A 的公钥加密过的东西只能通过 A 的私钥来解密；同理，A ...
+        
+      </div>
+      <a class="more" href="/2019/10/12/encryption/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
         <a href="/2019/10/11/base64/">Base64</a>
       </h2>
       <p class="article-date">October 11, 2019</p>
       
         
-  <a href="/tags#Server" >
-    <span class="tag-code">Server</span>
+  <a href="/tags#Common" >
+    <span class="tag-code">Common</span>
   </a>
 
       
       <div class="article-summary">
         
           二进制到字符串的转换方法。Base64是一种最常见的二进制编码方法。
+转化后可能会增加长度，但至少提供了一串可读的字符串。
 由于标准的Base64编码后可能出现字符+和/，在URL中就不能直接作为参数，所以又有一种”url safe”的base64编码，其实就是把字符+和/分别变成-和_：
-123456&gt;&gt;&gt; base64.b ...
+ ...
         
       </div>
       <a class="more" href="/2019/10/11/base64/">Read more</a>
@@ -322,22 +347,6 @@ categories: ReactGoals,pause work and come back to it later.assign priority to d
         
       </div>
       <a class="more" href="/2019/03/25/reactSetState/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2019/03/18/tmuxCommand/">tmuxCommand</a>
-      </h2>
-      <p class="article-date">March 18, 2019</p>
-      
-      <div class="article-summary">
-        
-          tmux lstmux new -s sessionNametmux attach -t sessionName
-CTRL + B then[  光标移动S  切换tmuxD  退出tmux，不销毁
-
-        
-      </div>
-      <a class="more" href="/2019/03/18/tmuxCommand/">Read more</a>
     </article>
   
 

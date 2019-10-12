@@ -10,7 +10,7 @@
   
   <title>
     
-      Base64 | Wonderjar&#39;s Blog
+      加解密简单总结 | Wonderjar&#39;s Blog
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -138,8 +138,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>Base64</h2>
-  <p class="post-date">2019-10-11</p>
+  <h2>加解密简单总结</h2>
+  <p class="post-date">2019-10-12</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -147,11 +147,14 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>二进制到字符串的转换方法。Base64是一种最常见的二进制编码方法。</p>
-<p>转化后可能会增加长度，但至少提供了一串可读的字符串。</p>
-<p>由于标准的Base64编码后可能出现字符+和/，在URL中就不能直接作为参数，所以又有一种”url safe”的base64编码，其实就是把字符+和/分别变成-和_：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; base64.b64encode(b&apos;i\xb7\x1d\xfb\xef\xff&apos;)</span><br><span class="line">b&apos;abcd++//&apos;</span><br><span class="line">&gt;&gt;&gt; base64.urlsafe_b64encode(b&apos;i\xb7\x1d\xfb\xef\xff&apos;)</span><br><span class="line">b&apos;abcd--__&apos;</span><br><span class="line">&gt;&gt;&gt; base64.urlsafe_b64decode(&apos;abcd--__&apos;)</span><br><span class="line">b&apos;i\xb7\x1d\xfb\xef\xff&apos;</span><br></pre></td></tr></table></figure>
-<p>Reference <a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017684507717184" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1017684507717184</a></p>
+    <section class="markdown-content"><h1 id="Hash算法加密"><a href="#Hash算法加密" class="headerlink" title="Hash算法加密"></a>Hash算法加密</h1><p>例如md5, sha等</p>
+<p>单向不可还原，利用多次取余，一个结果对应无穷多的原始值，只能做验证</p>
+<h1 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h1><p>A与B之间之间的通讯数据都用同一套的密钥来进行加密解密</p>
+<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><p>例如RSA等</p>
+<p>用公钥和私钥来加解密的算法。打个比方，A 的公钥加密过的东西只能通过 A 的私钥来解密；同理，A 的私钥加密过的东西只能通过 A 的公钥来解密。顾名思义，公钥是公开的，别人可以获取的到；私钥是私有的，只能自己拥有。</p>
+<p>利用两个极大的质数，而特大数字的质因数分解做不到</p>
+<h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><p>数字签名用来，保证信息传输的完整性、发送者的身份认证、防止交易中的抵赖发生。<br>数字签名是 A将原始明文通过 hash 算法 (<a href="http://wonderjar.me/2019/10/11/base64/">http://wonderjar.me/2019/10/11/base64/</a>) 得到摘要，这个摘要是不可逆的；将明文加密，连同摘要一起发送给B；B接收到后解密，得到这个摘要 a 和加密的明文，再将加密明文解密得到原始明文，然后通过同一 hash 算法得到新的摘要 b，比较 a 与 b 就可得知在传输过程中是否被更改过。<br>因此数字签名能够验证信息的完整性。如果中途数据被纂改或者丢失。那么对方就可以根据数字签名来辨别是否是来自对方的第一手信息数据。</p>
+<p>再解释一下，S代表服务端，持有私钥，C代表客户端，持有公钥<br>当C给S发数据时，使用公钥加密，可以保证内容即使被拦截，拦截者因为没有私钥也解不开加密内容<br>当S给C发数据时，S将数据hash产生摘要，将摘要和数据都使用私钥加密，拦截者拦截后用公钥看到内容和摘要，但拦截者即使修改内容，产生新的hash，却因为缺少私钥而无法产生加密后摘要，这就是数字签名的意义</p>
 </section>
     <!-- Tags START -->
     
@@ -170,20 +173,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2019/07/17/rabbitmqAdmin/">
+      <a class="nav-left" href="/2019/10/11/base64/">
         <span class="nav-arrow">← </span>
         
-          rabbitmqadmin CMD
+          Base64
         
       </a>
     
-    
-      <a class="nav-right" href="/2019/10/12/encryption/">
-        
-          加解密简单总结
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -205,7 +201,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Hash算法加密"><span class="toc-nav-text">Hash算法加密</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#对称加密"><span class="toc-nav-text">对称加密</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#非对称加密"><span class="toc-nav-text">非对称加密</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数字签名"><span class="toc-nav-text">数字签名</span></a></li></ol>
     
   </div>
 </aside>
@@ -215,7 +211,7 @@
 
 <script>
   (function () {
-    var url = 'http://wonderjar.me/2019/10/11/base64/';
+    var url = 'http://wonderjar.me/2019/10/12/encryption/';
     var banner = ''
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -271,7 +267,7 @@
     var gitmentConfig = "yanm1ng";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Base64",
+        id: "加解密简单总结",
         owner: "yanm1ng",
         repo: "yanm1ng.github.io",
         oauth: {
